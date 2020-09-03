@@ -38,6 +38,23 @@ PrefsVaultGUID=
 PrefsRevisionGUID=
 
 [Document1]
+DocumentPath=Libraries\QFN50P300X300X100-17N\Imported QFN50P300X300X100-17N.lia\TS30042-M050QFNR.SchLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=TJGDVCPL
+
+[Document2]
 DocumentPath=Libraries\0705530003\0705530003.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -54,7 +71,41 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UTNXEVED
 
-[Document2]
+[Document3]
+DocumentPath=Libraries\QFN50P300X300X100-17N\Imported QFN50P300X300X100-17N.lia\QFN50P300X300X100-17N.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=XEIQNVHA
+
+[Document4]
+DocumentPath=Libraries\SODFL3517X110N\Imported SODFL3517X110N.lia\SODFL3517X110N.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=JIBHOGWN
+
+[Document5]
 DocumentPath=Libraries\0705530003\MOLEX_0705530003.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -71,7 +122,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=WHSLNHKT
 
-[Document3]
+[Document6]
 DocumentPath=WB-AV-4510-CAN.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -88,7 +139,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CCRSBSVX
 
-[Document4]
+[Document7]
 DocumentPath=WB-AV-4510-CAN.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -105,7 +156,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TJNRSMRN
 
-[Document5]
+[Document8]
 DocumentPath=CANbus.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -122,7 +173,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FDBNCJTJ
 
-[Document6]
+[Document9]
 DocumentPath=MCU.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
