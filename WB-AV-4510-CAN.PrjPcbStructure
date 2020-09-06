@@ -1,0 +1,3 @@
+Record=TopLevelDocument|FileName=WB-AV-4510-CAN.SchDoc
+Record=SheetSymbol|SourceDocument=WB-AV-4510-CAN.SchDoc|Designator=CANbus|SchDesignator=CANbus|FileName=CANbus.SchDoc|SymbolType=Normal|RawFileName=CANbus.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=WB-AV-4510-CAN.SchDoc|Designator=MCU|SchDesignator=MCU|FileName=MCU.SchDoc|SymbolType=Normal|RawFileName=MCU.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
