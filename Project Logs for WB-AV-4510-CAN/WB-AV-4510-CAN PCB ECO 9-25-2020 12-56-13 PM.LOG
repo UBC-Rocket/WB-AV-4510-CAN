@@ -1,0 +1,107 @@
+Removed Pin From Net: NetName=NetU3_109 Pin=U7-3
+Removed Pin From Net: NetName=NetU3_110 Pin=U7-4
+Removed Pin From Net: NetName=NetU3_111 Pin=U7-5
+Removed Pin From Net: NetName=+3.3V_D Pin=U7-6
+Removed Pin From Net: NetName=NetU3_112 Pin=U7-7
+Removed Pin From Net: NetName=GND Pin=U7-25
+Removed Pin From Net: NetName=+24V Pin=U7-33
+Removed Member From Class: ClassName=eFuse Member=U7
+Change Component Designator: OldDesignator=C15 NewDesignator=C21
+Change Component Designator: OldDesignator=C16 NewDesignator=C22
+Change Component Designator: OldDesignator=C17 NewDesignator=C23
+Change Component Designator: OldDesignator=C18 NewDesignator=C24
+Change Component Designator: OldDesignator=U8 NewDesignator=U7
+Change Component Designator: OldDesignator=U9 NewDesignator=U8
+Change Component Designator: OldDesignator=U10 NewDesignator=U9
+Change Component Designator: OldDesignator=U11 NewDesignator=U10
+Added Component: Designator=*1(PQFN50P1200X1200X220_HS-33N)
+Added Component: Designator=*2(PQFN50P1200X1200X220_HS-33N)
+Added Component: Designator=*3(PQFN50P1200X1200X220_HS-33N)
+Added Component: Designator=*4(PQFN50P1200X1200X220_HS-33N)
+Added Component: Designator=J2(FP-1-5747150-6-MFG)
+Add component (AddParameter): Name = "Automotive"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Category"; Value = "Conn"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.te.com/usa-en/product-1-5747150-6.html?te_bu=Cor&te_type=other&te_campaign=oct_glo_cor-oct-global-oth-prtnr-fy19-oct-octo-buy-bom_sma-298_2&elqCampaignId=35216"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Conn Gender"; Value = "Female"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Conn Orientation"; Value = "Vertical"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Material"; Value = "Gold,Nickel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Rating"; Value = "6A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Device Class L1"; Value = "Connectors"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Device Class L2"; Value = "D-Sub Connectors"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Device Class L3"; Value = "unset"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digikey Description"; Value = "CONN D-SUB RCPT 9POS VERT SOLDER"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "12.54mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Is Female"; Value = "yes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Lead Free"; Value = "Yes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "1-5747150-6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Description"; Value = "D-Sub Standard Connectors RECP FRNT MTL SHL 9P female screwlocks"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number Of Contacts"; Value = "9"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Octopart"; Value = "https://octopart.com/1-5747150-6-te+connectivity-39500344"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "1-5747150-6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pitch"; Value = "2.74mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS"; Value = "TRUE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Shielding"; Value = "false"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature"; Value = "-55°C to +105°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range High"; Value = "+105°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range Low"; Value = "-55°C"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=PTE0 Pin=*1-10
+Added Pin To Net: NetName=PTE2 Pin=*1-11
+Added Pin To Net: NetName=PTE3 Pin=*1-12
+Added Pin To Net: NetName=+3.3V_D Pin=*1-13
+Added Pin To Net: NetName=PTE1 Pin=*1-16
+Added Pin To Net: NetName=GND Pin=*1-17
+Added Pin To Net: NetName=+24V Pin=*1-21
+Added Pin To Net: NetName=PTE4 Pin=*2-10
+Added Pin To Net: NetName=PTE2 Pin=*2-11
+Added Pin To Net: NetName=PTE3 Pin=*2-12
+Added Pin To Net: NetName=+3.3V_D Pin=*2-13
+Added Pin To Net: NetName=PTE1 Pin=*2-16
+Added Pin To Net: NetName=GND Pin=*2-17
+Added Pin To Net: NetName=+24V Pin=*2-21
+Added Pin To Net: NetName=PTE5 Pin=*3-10
+Added Pin To Net: NetName=PTE2 Pin=*3-11
+Added Pin To Net: NetName=PTE3 Pin=*3-12
+Added Pin To Net: NetName=+3.3V_D Pin=*3-13
+Added Pin To Net: NetName=PTE1 Pin=*3-16
+Added Pin To Net: NetName=GND Pin=*3-17
+Added Pin To Net: NetName=+24V Pin=*3-21
+Added Pin To Net: NetName=PTE6 Pin=*4-10
+Added Pin To Net: NetName=PTE2 Pin=*4-11
+Added Pin To Net: NetName=PTE3 Pin=*4-12
+Added Pin To Net: NetName=+3.3V_D Pin=*4-13
+Added Pin To Net: NetName=PTE1 Pin=*4-16
+Added Pin To Net: NetName=GND Pin=*4-17
+Added Pin To Net: NetName=+24V Pin=*4-21
+Added Pin To Net: NetName=Vout_a1 Pin=*1-20
+Added Pin To Net: NetName=Vout_a1 Pin=C14-2
+Added Pin To Net: NetName=Vout_a1 Pin=J2-1
+Added Net: Name=Vout_a1
+Added Pin To Net: NetName=Vout_a2 Pin=*1-19
+Added Pin To Net: NetName=Vout_a2 Pin=C13-2
+Added Pin To Net: NetName=Vout_a2 Pin=J2-2
+Added Net: Name=Vout_a2
+Added Pin To Net: NetName=Vout_b1 Pin=*2-20
+Added Pin To Net: NetName=Vout_b1 Pin=J2-3
+Added Net: Name=Vout_b1
+Added Pin To Net: NetName=Vout_b2 Pin=*2-19
+Added Pin To Net: NetName=Vout_b2 Pin=J2-4
+Added Net: Name=Vout_b2
+Added Pin To Net: NetName=Vout_c1 Pin=*3-20
+Added Pin To Net: NetName=Vout_c1 Pin=J2-5
+Added Net: Name=Vout_c1
+Added Pin To Net: NetName=Vout_c2 Pin=*3-19
+Added Pin To Net: NetName=Vout_c2 Pin=J2-6
+Added Net: Name=Vout_c2
+Added Pin To Net: NetName=Vout_d1 Pin=*4-20
+Added Pin To Net: NetName=Vout_d1 Pin=J2-7
+Added Net: Name=Vout_d1
+Added Pin To Net: NetName=Vout_d2 Pin=*4-19
+Added Pin To Net: NetName=Vout_d2 Pin=J2-8
+Added Net: Name=Vout_d2
+Added Member To Class: ClassName=eFuse Member=Component *1 MC06XS4200
+Added Member To Class: ClassName=eFuse Member=Component *2 MC06XS4200
+Added Member To Class: ClassName=eFuse Member=Component *3 MC06XS4200
+Added Member To Class: ClassName=eFuse Member=Component *4 MC06XS4200
+Added Member To Class: ClassName=eFuse Member=Component J2 1-5747150-6

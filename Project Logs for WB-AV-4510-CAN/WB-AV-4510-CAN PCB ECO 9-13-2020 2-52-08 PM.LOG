@@ -1,0 +1,12 @@
+Added Component: Designator=crystal1(ECS-.327-CDX-1128)
+Add component (AddParameter): Name = "SPN"; Value = "XC2190CT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "32.768kHz"; VariantName = "[No Variations]"
+Added Component: Designator=oscillator1(ECS-160-8-30B-CKM)
+Add component (AddParameter): Name = "SPN"; Value = "XC1839CT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "16MHz"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Net*1_40 Pin=crystal1-1
+Added Pin To Net: NetName=Net*1_41 Pin=crystal1-2
+Added Pin To Net: NetName=Net*1_72 Pin=oscillator1-1
+Added Pin To Net: NetName=Net*1_73 Pin=oscillator1-3
+Added Member To Class: ClassName=MCU Member=Component crystal1 SMD_Crystal
+Added Member To Class: ClassName=MCU Member=Component oscillator1 SMD_oscillator
