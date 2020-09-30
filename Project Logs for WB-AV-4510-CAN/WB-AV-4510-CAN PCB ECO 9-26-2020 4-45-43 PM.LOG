@@ -1,0 +1,25 @@
+Removed Pin From Net: NetName=Vout_c1 Pin=J2-5
+Removed Pin From Net: NetName=Vout_c2 Pin=J2-6
+Removed Pin From Net: NetName=Vout_d1 Pin=J2-7
+Removed Pin From Net: NetName=Vout_d2 Pin=J2-8
+Removed Member From Class: ClassName=eFuse Member=C21
+Removed Member From Class: ClassName=eFuse Member=C22
+Removed Member From Class: ClassName=eFuse Member=C23
+Removed Member From Class: ClassName=eFuse Member=C24
+Change Component Footprint: Designator=C15 Old Footprint=CAPC1608X95X40LL15T15 New Footprint=CAPC1608X95X40LL15T15
+Change Component Footprint: Designator=C16 Old Footprint=CAPC1608X95X40LL15T15 New Footprint=CAPC1608X95X40LL15T15
+Change Component Footprint: Designator=C17 Old Footprint=CAPC1608X95X40LL15T15 New Footprint=CAPC1608X95X40LL15T15
+Change Component Footprint: Designator=C18 Old Footprint=CAPC1608X95X40LL15T15 New Footprint=CAPC1608X95X40LL15T15
+Change Component Footprint: Designator=C19 Old Footprint=CAPC1608X95X40LL15T15 New Footprint=CAPC1608X95X40LL15T15
+Change Component Footprint: Designator=C20 Old Footprint=CAPC1608X95X40LL15T15 New Footprint=CAPC1608X95X40LL15T15
+Added Pin To Net: NetName=Vout_c1 Pin=J2-6
+Added Pin To Net: NetName=Vout_c2 Pin=J2-7
+Added Pin To Net: NetName=Vout_d1 Pin=J2-8
+Added Pin To Net: NetName=Vout_d2 Pin=J2-9
+Added Member To Class: ClassName=eFuse Member=Component C15 Cap
+Added Member To Class: ClassName=eFuse Member=Component C16 Cap
+Added Member To Class: ClassName=eFuse Member=Component C17 Cap
+Added Member To Class: ClassName=eFuse Member=Component C18 Cap
+Added Member To Class: ClassName=Temp_Sensor Member=Component U7 MCP9808T-E/MS
+Added Member To Class: ClassName=Thermocouple Member=Component U9 MAX31855KASA+
+Added Member To Class: ClassName=Thermocouple Member=Component U10 MAX31855KASA+
