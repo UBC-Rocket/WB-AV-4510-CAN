@@ -1,0 +1,4 @@
+Added Component: Designator=U*(*QFN50P300X300X100-17N)
+Add component (AddParameter): Name = "Supplier 1"; Value = "Newark"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "14AC8297"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=MCU Member=Component U* TS30042-M050QFNR
