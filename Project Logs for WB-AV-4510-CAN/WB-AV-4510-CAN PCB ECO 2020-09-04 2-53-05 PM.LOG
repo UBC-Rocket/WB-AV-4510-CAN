@@ -1,0 +1,13 @@
+Added Pin To Net: NetName=GND Pin=U2-9
+Added Pin To Net: NetName=RESET Pin=P1-3
+Added Pin To Net: NetName=RESET Pin=U2-14
+Added Net: Name=RESET
+Added Pin To Net: NetName=SWDCLK Pin=P1-7
+Added Pin To Net: NetName=SWDCLK Pin=U2-5
+Added Net: Name=SWDCLK
+Added Pin To Net: NetName=SWDIO Pin=P1-9
+Added Pin To Net: NetName=SWDIO Pin=U2-3
+Added Net: Name=SWDIO
+Added Pin To Net: NetName=SWO Pin=P1-5
+Added Pin To Net: NetName=SWO Pin=U2-1
+Added Net: Name=SWO

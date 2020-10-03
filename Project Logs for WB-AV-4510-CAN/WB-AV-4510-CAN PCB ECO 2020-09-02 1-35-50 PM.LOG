@@ -1,0 +1,43 @@
+Removed Member From Class: ClassName=MCU Member=U?
+Change Component Designator: OldDesignator=C? NewDesignator=C1
+Change Component Designator: OldDesignator=C? NewDesignator=C2
+Change Component Designator: OldDesignator=C? NewDesignator=C3
+Change Component Designator: OldDesignator=C? NewDesignator=C4
+Change Component Designator: OldDesignator=C? NewDesignator=C5
+Change Component Designator: OldDesignator=D? NewDesignator=D1
+Change Component Designator: OldDesignator=D? NewDesignator=D2
+Change Component Designator: OldDesignator=J? NewDesignator=J1
+Change Component Designator: OldDesignator=J? NewDesignator=J2
+Change Component Designator: OldDesignator=P? NewDesignator=P1
+Change Component Designator: OldDesignator=R? NewDesignator=R1
+Change Component Designator: OldDesignator=R? NewDesignator=R2
+Change Component Designator: OldDesignator=R? NewDesignator=R3
+Change Component Designator: OldDesignator=R? NewDesignator=R4
+Change Component Designator: OldDesignator=TP? NewDesignator=TP1
+Change Component Designator: OldDesignator=TP? NewDesignator=TP2
+Change Component Designator: OldDesignator=TP? NewDesignator=TP3
+Change Component Designator: OldDesignator=TP? NewDesignator=TP4
+Change Component Designator: OldDesignator=U? NewDesignator=U1
+Change Component Designator: OldDesignator=U? NewDesignator=U2
+Change Net Name : Old Net Name=NetC?_2 New Net Name=NetC4_2
+Change Net Name : Old Net Name=NetU?_1 New Net Name=NetU1_1
+Change Net Name : Old Net Name=NetU?_4 New Net Name=NetU1_4
+Change Net Name : Old Net Name=NetU?_6 New Net Name=NetU1_6
+Change Net Name : Old Net Name=NetU?_7 New Net Name=NetU1_7
+Added Pin To Net: NetName=NetC5_2 Pin=C5-2
+Added Pin To Net: NetName=NetC5_2 Pin=R3-1
+Added Pin To Net: NetName=NetC5_2 Pin=R4-2
+Added Net: Name=NetC5_2
+Added Member To Class: ClassName=CANbus Member=Component C1 GRM1885C1H101JA01D
+Added Member To Class: ClassName=CANbus Member=Component C2 GRM1885C1H101JA01D
+Added Member To Class: ClassName=CANbus Member=Component C3 GRM1885C1H101JA01D
+Added Member To Class: ClassName=CANbus Member=Component C4 GRM188R71H472KA01D
+Added Member To Class: ClassName=CANbus Member=Component D2 NUP2105LT1G
+Added Member To Class: ClassName=CANbus Member=Component J1 0705530003
+Added Member To Class: ClassName=CANbus Member=Component R1 Res3
+Added Member To Class: ClassName=CANbus Member=Component R3 Res3
+Added Member To Class: ClassName=CANbus Member=Component R4 Res3
+Added Member To Class: ClassName=CANbus Member=Component TP1 5003
+Added Member To Class: ClassName=CANbus Member=Component TP3 5003
+Added Member To Class: ClassName=CANbus Member=Component TP4 5003
+Added Member To Class: ClassName=MCU Member=Component U2 LPC1756FBD80

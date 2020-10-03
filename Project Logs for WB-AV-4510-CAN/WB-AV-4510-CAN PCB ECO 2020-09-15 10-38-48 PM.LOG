@@ -1,0 +1,15 @@
+Removed Member From Class: ClassName=Temp_Sensor Member=C14
+Removed Member From Class: ClassName=MCU Member=U7
+Change Component Designator: OldDesignator=C14 NewDesignator=C15
+Change Component Designator: OldDesignator=U3 NewDesignator=U4
+Change Component Designator: OldDesignator=U4 NewDesignator=U5
+Change Component Designator: OldDesignator=U5 NewDesignator=U6
+Change Component Designator: OldDesignator=U6 NewDesignator=U7
+Change Component Designator: OldDesignator=U7 NewDesignator=U3
+Change Net Name : Old Net Name=NetU6_3 New Net Name=NetU3_109
+Change Net Name : Old Net Name=NetU6_4 New Net Name=NetU3_110
+Change Net Name : Old Net Name=NetU6_5 New Net Name=NetU3_111
+Change Net Name : Old Net Name=NetU6_7 New Net Name=NetU3_112
+Change Net Name : Old Net Name=NetU7_106 New Net Name=NetU3_106
+Added Member To Class: ClassName=Temp_Sensor Member=Component C15 Cap Semi
+Added Member To Class: ClassName=MCU Member=Component U6 TS30042-M050QFNR
