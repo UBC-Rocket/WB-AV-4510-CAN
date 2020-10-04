@@ -1,4 +1,4 @@
-﻿[Design]
+[Design]
 Version=1.0
 HierarchyMode=0
 ChannelRoomNamingStyle=0
@@ -38,6 +38,40 @@ PrefsVaultGUID=
 PrefsRevisionGUID=
 
 [Document1]
+DocumentPath=Libraries\114-00841-68\Imported 1140084168.lia\1140084168.SchLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=TKXUGPLH
+
+[Document2]
+DocumentPath=Libraries\114-00841-68\Imported 1140084168.lia\1140084168.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=TIUGJJHE
+
+[Document3]
 DocumentPath=Libraries\ThermocouplePCBConnector.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -54,7 +88,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TYSMPUWT
 
-[Document2]
+[Document4]
 DocumentPath=Libraries\MK66FX1M0VLQ18\AltiumDesigner\2019-07-06_08-00-28\MK66FX1M0VLQ18.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -71,7 +105,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XPAOQREN
 
-[Document3]
+[Document5]
 DocumentPath=Libraries\MK66FX1M0VLQ18\AltiumDesigner\2019-07-06_08-00-28\MK66FX1M0VLQ18.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -88,7 +122,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=YRDSLBXK
 
-[Document4]
+[Document6]
 DocumentPath=Libraries\MC22XS4200\SOP-32_11.8x1.27.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -105,7 +139,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=LQIQRHRF
 
-[Document5]
+[Document7]
 DocumentPath=Libraries\QFN50P300X300X100-17N\Imported QFN50P300X300X100-17N.lia\TS30042-M050QFNR.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -122,7 +156,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TJGDVCPL
 
-[Document6]
+[Document8]
 DocumentPath=Libraries\0705530003\0705530003.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -139,7 +173,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UTNXEVED
 
-[Document7]
+[Document9]
 DocumentPath=Libraries\QFN50P300X300X100-17N\Imported QFN50P300X300X100-17N.lia\QFN50P300X300X100-17N.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -156,7 +190,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XEIQNVHA
 
-[Document8]
+[Document10]
 DocumentPath=Libraries\SODFL3517X110N\Imported SODFL3517X110N.lia\SODFL3517X110N.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -173,7 +207,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=JIBHOGWN
 
-[Document9]
+[Document11]
 DocumentPath=Libraries\0705530003\MOLEX_0705530003.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -190,7 +224,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=WHSLNHKT
 
-[Document10]
+[Document12]
 DocumentPath=WB-AV-4510-CAN.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -207,7 +241,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CCRSBSVX
 
-[Document11]
+[Document13]
 DocumentPath=WB-AV-4510-CAN.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -224,7 +258,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TJNRSMRN
 
-[Document12]
+[Document14]
 DocumentPath=CANbus.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -241,7 +275,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FDBNCJTJ
 
-[Document13]
+[Document15]
 DocumentPath=Temp_Sensor.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -258,7 +292,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=SMMZLAKA
 
-[Document14]
+[Document16]
 DocumentPath=MCU.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -275,7 +309,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CDUSJLMA
 
-[Document15]
+[Document17]
 DocumentPath=Libraries\MC22XS4200\MC22XS4200.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -292,7 +326,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=RIQMUFPR
 
-[Document16]
+[Document18]
 DocumentPath=Efuse.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -309,7 +343,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=PPURBVCS
 
-[Document17]
+[Document19]
 DocumentPath=Libraries\MK66FX1M0VMD18\MK66FX1M0VMD18.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -326,7 +360,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document18]
+[Document20]
 DocumentPath=Libraries\MK66FX1M0VMD18\MK66FX1M0VMD18.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -343,7 +377,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=JVHTISAB
 
-[Document19]
+[Document21]
 DocumentPath=Libraries\MKL02Z32VFG4\AltiumDesigner\MKL02Z32VFG4.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -360,7 +394,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document20]
+[Document22]
 DocumentPath=Libraries\MKL02Z32VFG4\AltiumDesigner\MKL02Z32VFG4.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -377,7 +411,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document21]
+[Document23]
 DocumentPath=Libraries\ECS-160-8-30B-CKM\ECS-160-8-30B-CKM.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -394,7 +428,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=HRYUGWLL
 
-[Document22]
+[Document24]
 DocumentPath=Libraries\ECS-160-8-30B-CKM\ECS-160-8-30B-CKM.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -411,7 +445,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document23]
+[Document25]
 DocumentPath=Libraries\ECS-.327-CDX-1128\ECS-.327-CDX-1128.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -428,7 +462,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document24]
+[Document26]
 DocumentPath=Libraries\ECS-.327-CDX-1128\ECS-.327-CDX-1128.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -445,7 +479,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document25]
+[Document27]
 DocumentPath=Libraries\P13348SCT-ND\P13348SCT-ND.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -462,7 +496,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document26]
+[Document28]
 DocumentPath=Libraries\FTSH-105-01-XXX-DV-K--Symbol-Altium-44987\FTSH-105-01-XXX-DV-K.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -479,7 +513,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XXGNXAAM
 
-[Document27]
+[Document29]
 DocumentPath=Libraries\FTSH-105-01-XXX-DV-K--Symbol-Altium-44987\FTSH-105-01-XXX-DV-K.SCHLIB
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -496,7 +530,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ROAUMZMU
 
-[Document28]
+[Document30]
 DocumentPath=Thermocouple.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -513,7 +547,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=PUHHEOTL
 
-[Document29]
+[Document31]
 DocumentPath=Libraries\MAX31855KASA\MAX31855KASA.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -530,7 +564,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document30]
+[Document32]
 DocumentPath=Libraries\MAX31855KASA\MAX31855KASA.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -547,7 +581,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document31]
+[Document33]
 DocumentPath=Libraries\MC06XS4200\MC06XS4200.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -564,7 +598,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document32]
+[Document34]
 DocumentPath=Libraries\MC06XS4200\MC06XS4200.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -581,7 +615,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=EJKOCIVZ
 
-[Document33]
+[Document35]
 DocumentPath=Libraries\0603capacitor\0603capacitor.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -598,7 +632,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document34]
+[Document36]
 DocumentPath=Libraries\0603capacitor\0603capacitor.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -615,7 +649,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document35]
+[Document37]
 DocumentPath=Libraries\MAX11192\MAX11192.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -632,7 +666,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document36]
+[Document38]
 DocumentPath=Libraries\MAX11192\MAX11192.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -768,7 +802,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=Microsoft Print to PDF
+TargetPrinter=Hewlett-Packard hp LaserJet 4250
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
