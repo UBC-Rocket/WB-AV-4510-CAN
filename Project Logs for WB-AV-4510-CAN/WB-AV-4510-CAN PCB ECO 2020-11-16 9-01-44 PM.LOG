@@ -1,0 +1,34 @@
+Removed Pin From Net: NetName=GND Pin=J4-6
+Removed Pin From Net: NetName=GND Pin=J4-7
+Removed Pin From Net: NetName=GND Pin=J4-8
+Removed Pin From Net: NetName=GND Pin=J4-9
+Removed Pin From Net: NetName=GND Pin=J4-10
+Removed Pin From Net: NetName=GND Pin=J4-11
+Removed Pin From Net: NetName=Reset_b Pin=P2-2
+Removed Pin From Net: NetName=PTA2 Pin=P4-2
+Removed Pin From Net: NetName=PTA0 Pin=P5-2
+Removed Pin From Net: NetName=PTA3 Pin=P6-2
+Removed Pin From Net: NetName=USB0_DM Pin=R5-2
+Removed Pin From Net: NetName=USB0_DP Pin=R6-2
+Removed Pin From Net: NetName=GND Pin=SW1-1
+Removed Pin From Net: NetName=GND Pin=SW1-1
+Removed Pin From Net: NetName=+3.3V_D Pin=U2-3
+Removed Pin From Net: NetName=+3.3V_A Pin=U2-4
+Removed Pin From Net: NetName=GND Pin=U2-5
+Removed Pin From Net: NetName=GND Pin=U2-6
+Removed Member From Class: ClassName=MCU Member=J4
+Removed Member From Class: ClassName=MCU Member=P1
+Removed Member From Class: ClassName=MCU Member=P2
+Removed Member From Class: ClassName=MCU Member=P4
+Removed Member From Class: ClassName=MCU Member=P5
+Removed Member From Class: ClassName=MCU Member=P6
+Removed Member From Class: ClassName=MCU Member=R5
+Removed Member From Class: ClassName=MCU Member=R6
+Removed Member From Class: ClassName=MCU Member=SW1
+Removed Member From Class: ClassName=MCU Member=U2
+Change Component Designator: OldDesignator=  NewDesignator=R18
+Added Pin To Net: NetName=Reset_b Pin=P3-1
+Added Pin To Net: NetName=PTA2 Pin=P3-5
+Added Pin To Net: NetName=PTA0 Pin=P3-7
+Added Pin To Net: NetName=PTA3 Pin=P3-9
+Added Member To Class: ClassName=Power Member=Component R18 150
