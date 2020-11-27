@@ -1,0 +1,6 @@
+Added Component: Designator=SW?(ITT-PTS645S-4_V)
+Add component (AddParameter): Name = "Datasheet URL"; Value = "https://datasheet.ciiva.com/29903/getdatasheetpartid-786341-29903846.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Feb-14"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "ITT Cannon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer URL"; Value = "http://www.ittcannon.com/"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=MCU Member=Component SW? PTS645SM43SMTR92LFS
