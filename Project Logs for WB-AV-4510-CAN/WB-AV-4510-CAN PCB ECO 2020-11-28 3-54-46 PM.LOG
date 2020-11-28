@@ -1,0 +1,32 @@
+Removed Pin From Net: NetName=T1+ Pin=C16-1
+Removed Pin From Net: NetName=T1- Pin=C16-2
+Removed Pin From Net: NetName=T2+ Pin=C17-1
+Removed Pin From Net: NetName=T2- Pin=C17-2
+Removed Pin From Net: NetName=T3+ Pin=C18-1
+Removed Pin From Net: NetName=T3- Pin=C18-2
+Change Component Footprint: Designator=C16 Old Footprint=FP-C0402-BB-MFG New Footprint=CAPC1608X90X35NL15T15
+Change Component Footprint: Designator=C17 Old Footprint=FP-C0402-BB-MFG New Footprint=CAPC1608X90X35NL15T15
+Change Component Footprint: Designator=C18 Old Footprint=FP-C0402-BB-MFG New Footprint=CAPC1608X90X35NL15T15
+Change Component Comment : Designator=C16 Old Comment=C0402C104K8PACTU New Comment=0.1uF
+Change Component Comment : Designator=C17 Old Comment=C0402C104K8PACTU New Comment=0.1uF
+Change Component Comment : Designator=C18 Old Comment=C0402C104K8PACTU New Comment=0.1uF
+Change Managed Component Library Link : Designator=C16 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=BF0C02D7-3D5D-49A5-82C4-6DF8F12CFA21 New ItemGUID=73091797-5062-4ADC-9E86-AD37E546C588 Old RevisionGUID=339396D0-F823-4090-BFEE-D9A0095E809A New RevisionGUID=57629837-7CF5-430C-9FA1-5950FF24E44C
+Change Managed Component Library Link : Designator=C17 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=BF0C02D7-3D5D-49A5-82C4-6DF8F12CFA21 New ItemGUID=73091797-5062-4ADC-9E86-AD37E546C588 Old RevisionGUID=339396D0-F823-4090-BFEE-D9A0095E809A New RevisionGUID=57629837-7CF5-430C-9FA1-5950FF24E44C
+Change Managed Component Library Link : Designator=C18 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=BF0C02D7-3D5D-49A5-82C4-6DF8F12CFA21 New ItemGUID=73091797-5062-4ADC-9E86-AD37E546C588 Old RevisionGUID=339396D0-F823-4090-BFEE-D9A0095E809A New RevisionGUID=57629837-7CF5-430C-9FA1-5950FF24E44C
+Change component parameters: Designator = "C16" ("C16"); Footprint = "FP-C0402-BB-MFG"; UniqueID = "\KTMNNYCF\RVFLWCGZ" ("\KTMNNYCF\RVFLWCGZ")
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "AVX Interconnect / Elco"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "0603YC104JAT2A"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C17" ("C17"); Footprint = "FP-C0402-BB-MFG"; UniqueID = "\KTMNNYCF\RWULKPUO" ("\KTMNNYCF\RWULKPUO")
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "AVX Interconnect / Elco"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "0603YC104JAT2A"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C18" ("C18"); Footprint = "FP-C0402-BB-MFG"; UniqueID = "\KTMNNYCF\IROKDDBI" ("\KTMNNYCF\IROKDDBI")
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "AVX Interconnect / Elco"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "0603YC104JAT2A"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=T1- Pin=C16-1
+Added Pin To Net: NetName=T1+ Pin=C16-2
+Added Pin To Net: NetName=T2- Pin=C17-1
+Added Pin To Net: NetName=T2+ Pin=C17-2
+Added Pin To Net: NetName=T3- Pin=C18-1
+Added Pin To Net: NetName=T3+ Pin=C18-2
+Added Member To Class: ClassName=Power Member=Component R26 150
+Added Member To Class: ClassName=Power Member=Component R28 75
