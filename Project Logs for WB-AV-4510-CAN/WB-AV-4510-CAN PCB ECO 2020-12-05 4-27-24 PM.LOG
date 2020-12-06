@@ -1,0 +1,43 @@
+Removed Pin From Net: NetName=T1- Pin=C16-1
+Removed Pin From Net: NetName=T1+ Pin=C16-2
+Removed Pin From Net: NetName=T2- Pin=C17-1
+Removed Pin From Net: NetName=T2+ Pin=C17-2
+Removed Pin From Net: NetName=T3- Pin=C18-1
+Removed Pin From Net: NetName=T3+ Pin=C18-2
+Removed Pin From Net: NetName=3.3V Pin=P1-10
+Removed Pin From Net: NetName=GND Pin=R26-1
+Removed Pin From Net: NetName=NetLED9_1 Pin=R26-2
+Removed Pin From Net: NetName=3.3V Pin=U1-11
+Removed Member From Class: ClassName=CANbus Member=D1
+Removed Member From Class: ClassName=Power Member=R26
+Added Component: Designator=R?(RESC1609X50X30LL10T20)
+Add component (AddParameter): Name = "Manufacturer"; Value = "Vishay Dale"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "CRCW06031K50FKEA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1.5k"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+5V Pin=C1-2
+Added Pin To Net: NetName=+5V Pin=C2-2
+Added Pin To Net: NetName=GND Pin=C16-1
+Added Pin To Net: NetName=+3.3V Pin=C16-2
+Added Pin To Net: NetName=GND Pin=C17-1
+Added Pin To Net: NetName=+3.3V Pin=C17-2
+Added Pin To Net: NetName=GND Pin=C18-1
+Added Pin To Net: NetName=+3.3V Pin=C18-2
+Added Pin To Net: NetName=+24V Pin=LED7-2
+Added Pin To Net: NetName=+24V_IN Pin=LED9-2
+Added Pin To Net: NetName=3.3V_D Pin=P1-10
+Added Pin To Net: NetName=+3.3V_D Pin=R34-1
+Added Pin To Net: NetName=GND Pin=R?-1
+Added Pin To Net: NetName=NetLED9_1 Pin=R?-2
+Added Pin To Net: NetName=+24V Pin=TP1-1
+Added Pin To Net: NetName=+24V_IN Pin=TP3-1
+Added Pin To Net: NetName=+3.3V_D Pin=U1-11
+Change Net Name : Old Net Name=CAN1_STBN New Net Name=NetU1_14
+Change Net Name : Old Net Name=CAN2_STBN New Net Name=NetU1_8
+Added Pin To Net: NetName=NetD4_2 Pin=D4-2
+Added Pin To Net: NetName=NetD4_2 Pin=J4-1
+Added Net: Name=NetD4_2
+Added Member To Class: ClassName=CANbus Member=Component D2 NUP2105LT1G
+Added Member To Class: ClassName=CANbus Member=Component R3 Res3
+Added Member To Class: ClassName=CANbus Member=Component R4 Res3
+Added Member To Class: ClassName=Temp_Sensor Member=Component R23 Res3
+Added Member To Class: ClassName=Power Member=Component R? CRCW06031K50FKEA
