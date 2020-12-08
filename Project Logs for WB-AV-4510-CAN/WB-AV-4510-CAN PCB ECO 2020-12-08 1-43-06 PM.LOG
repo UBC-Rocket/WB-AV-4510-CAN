@@ -1,0 +1,15 @@
+Change Component Footprint: Designator=C38 Old Footprint=CAPC1608X95X40LL15T15 New Footprint=CAPC1608X95X40LL15T15
+Change Component Footprint: Designator=C39 Old Footprint=CAPC1608X95X40LL15T15 New Footprint=CAPC1608X95X40LL15T15
+Added Component: Designator=*4(PQFN50P1200X1200X220_HS-33N)
+Added Pin To Net: NetName=SPI0_CS3 Pin=*4-10
+Added Pin To Net: NetName=SCK0 Pin=*4-11
+Added Pin To Net: NetName=MOSI0 Pin=*4-12
+Added Pin To Net: NetName=+3.3V_D Pin=*4-13
+Added Pin To Net: NetName=GND Pin=*4-14
+Added Pin To Net: NetName=MISO0 Pin=*4-16
+Added Pin To Net: NetName=GND Pin=*4-17
+Added Pin To Net: NetName=Vout_d2 Pin=*4-19
+Added Pin To Net: NetName=Vout_d1 Pin=*4-20
+Added Pin To Net: NetName=+24V Pin=*4-21
+Added Pin To Net: NetName=GND Pin=*4-22
+Added Member To Class: ClassName=DAQ and Actuators Member=Component *4 MC06XS4200
