@@ -1,0 +1,29 @@
+Removed Member From Class: ClassName=Power Member=C19
+Removed Member From Class: ClassName=Power Member=C20
+Removed Member From Class: ClassName=Power Member=C21
+Removed Member From Class: ClassName=Power Member=C22
+Removed Member From Class: ClassName=Power Member=C23
+Removed Member From Class: ClassName=Power Member=C28
+Removed Member From Class: ClassName=Power Member=C29
+Removed Member From Class: ClassName=Power Member=C30
+Removed Member From Class: ClassName=Power Member=C31
+Removed Member From Class: ClassName=Power Member=C32
+Added Pin To Net: NetName=+3.3V_D Pin=P1-10
+Added Pin To Net: NetName=+3.3V_D Pin=R7-2
+Added Pin To Net: NetName=+3.3V_D Pin=U2-42
+Added Pin To Net: NetName=+3.3V_D Pin=U2-43
+Added Pin To Net: NetName=+3.3V_D Pin=U2-56
+Added Pin To Net: NetName=+3.3V_D Pin=U2-70
+Added Pin To Net: NetName=+3.3V_D Pin=U2-94
+Added Pin To Net: NetName=+3.3V_D Pin=U2-108
+Added Pin To Net: NetName=+3.3V_D Pin=U2-122
+Added Member To Class: ClassName=MCU Member=Component C19 0.1uF
+Added Member To Class: ClassName=MCU Member=Component C20 0.1uF
+Added Member To Class: ClassName=MCU Member=Component C21 0.1uF
+Added Member To Class: ClassName=MCU Member=Component C22 0.1uF
+Added Member To Class: ClassName=MCU Member=Component C23 0.1uF
+Added Member To Class: ClassName=MCU Member=Component C28 0.1uF
+Added Member To Class: ClassName=MCU Member=Component C29 0.1uF
+Added Member To Class: ClassName=MCU Member=Component C30 0.1uF
+Added Member To Class: ClassName=MCU Member=Component C31 0.1uF
+Added Member To Class: ClassName=MCU Member=Component C32 0.1uF
