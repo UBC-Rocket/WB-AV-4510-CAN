@@ -1,0 +1,32 @@
+Added Component: Designator=U?(DBZ0003A_L)
+Add component (AddParameter): Name = "Code_JEDEC"; Value = "TO-236"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.ti.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.ti.com/general/docs/lit/getliterature.tsp?genericPartNumber=REF3318&fileType=pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Package Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://www.ti.com/litv/pdf/mpds108a"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "SBOS392A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Eco-Plan"; Value = "Green (RoHS & no Sb/Br)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Iout/Iz(Max)(mA)"; Value = "5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Iq(Max)(uA)"; Value = "5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "3-Pin Plastic Small Outline, Body 2.92 x 1.3 mm, Pitch 0.95 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "DBZ0003A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "4203227/B"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = "REF3318AIDBZT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rating"; Value = "Catalog"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SubFamily"; Value = "Series Voltage Reference"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temp Coeff(Max)(ppm/ degree C)"; Value = "30"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temp Coeff(Typ)(ppm/ degree C)"; Value = "8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VI(Max)(V)"; Value = "5.5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VI(Min)(V)"; Value = "1.98"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VO(V)"; Value = "1.8"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=DAQ and Actuators Member=Component * MCP33121-05
+Added Member To Class: ClassName=DAQ and Actuators Member=Component * MCP33121-05
+Added Member To Class: ClassName=DAQ and Actuators Member=Component * MCP33121-05
+Added Member To Class: ClassName=DAQ and Actuators Member=Component U? MCP6286T-E/OT
+Added Member To Class: ClassName=DAQ and Actuators Member=Component U? MCP6286T-E/OT
+Added Member To Class: ClassName=DAQ and Actuators Member=Component U? REF3318AIDBZT
+Added Member To Class: ClassName=DAQ and Actuators Member=Component U? MCP6286T-E/OT
