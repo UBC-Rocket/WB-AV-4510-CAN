@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=T1- Pin=R29-2
+Change Net Name : Old Net Name=T1+ New Net Name=T1_P
+Change Net Name : Old Net Name=T1- New Net Name=T1_N
+Added Pin To Net: NetName=T1- Pin=R29-2
+Added Net: Name=T1-
+Added Differential Pair: Name=T1
+Added Room: Name=24VRegs
+Added Room: Name=CANbus
+Added Room: Name=DAQ and Actuators
+Added Room: Name=MCU
+Added Room: Name=Power
+Added Room: Name=Temp_Sensor
+Added Room: Name=Thermocouple
