@@ -855,6 +855,10 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UHTFLVGF
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for WB-AV-4510-CAN\Design Rule Check - WB-AV-4510-CAN.html
+DItemRevisionGUID=
+
 [Configuration1]
 Name=Sources
 ParameterCount=0

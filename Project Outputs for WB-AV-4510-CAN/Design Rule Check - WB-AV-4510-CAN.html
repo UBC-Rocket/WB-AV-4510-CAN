@@ -1,0 +1,883 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD21\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2021-02-07</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">9:27:22 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc" class="file"><acronym title="C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc">C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">173</td></tr>
+</table>
+</td>
+</table><a name="IDSDMH5QZTJJYHD31FQV0SEZMAHLOIDLIXVAWG5MPD2GVKNCGPF0QN"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMI0153KK4H1TDDLVTALVDDHE2CPUG1UANK0TE2PKD4W23SBTD5S">Clearance Constraint (Gap=0.254mm) (InNamedPolygon('gnd') Or InNamedPolygon('GND_L04_P041')),(InDifferentialPair('CAN1') Or InDifferentialPair('CAN2')  Or InDifferentialPair('TxD') Or InDifferentialPair('RxD') Or InDifferentialPair('eth_rx') Or InDifferentialPair('eth_tx'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDMVANMZBKJYJ1JB2X23RP5OE1QIGPTVIWGS1514EEBOTSI25ZJMNH">Clearance Constraint (Gap=0.178mm) (IsStitchingVia and InNet('GND')),((IsVia and (Not IsStitchingVia)) Or IsPad)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWE0P0GZQ0WM5D10I3CNUOALLZBQ2RJO3DRAAQXD3ESDE42EXT05M">Clearance Constraint (Gap=0.152mm) (All),(All)</a></td>
+<td class="column2">30</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOIYGC30LVLBQFS1A40FC0SLV0PQGDW3UWRHO3LPTV40AUT3FNCU">Short-Circuit Constraint (Allowed=No) (InNet('No Net')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNE1Y1SJKBVWNGDIFAHKHNRZTCPWRCFEJSKIXNEIOTJI0T2QMVJH">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID1YOKDUCIJSL2D0B0UHUFTNW5XCQSVDL0TSDEW3PBVW3OXLN0RLCN">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDFGJAA2GEEBSKKDE5A2LKFEGU0PBKY4IXS34GHNFKJK0RAKEENFAL">Width Constraint (Min=0.152mm) (Max=5.08mm) (Preferred=0.305mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPED3PNFNTMOGE1TECTGF2J2B0DE5KKTLHMPMSHF0EWB551GYX4OF">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSV5E0DU1J5WZOTZNGBEC4VNA5H3MNTTXLA4TCZEK3EC0HUP1AG0">Acute Angle Constraint (Minimum=60.000) (All)</a></td>
+<td class="column2">23</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDS24VUXC14XU5BBUCXMIBU5FAYKMVVVX0X4KPB1GD2CX5KO5SBIV">Hole Size Constraint (Min=0.025mm) (Max=25.4mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQ4R5W2HPHLOKMLHH4GQ3DBRTULXL4RDDDOMIVHJY4GVQ1VCP5QML">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOGJFUNGIWYNYO42H2E05DHGAHEIB5P0R1IMG3BBDDJXUFEYM54IK">Minimum Solder Mask Sliver (Gap=0.025mm) (All),(All)</a></td>
+<td class="column2">42</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGG2KBKDZBFPAD5J2H1CQHZF0TFJSH30KJ1G10UF2ESYA5XPSJCQH">Silk To Solder Mask (Clearance=0.025mm) (IsPad),(All)</a></td>
+<td class="column2">72</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3BMCHSYSEQ3BMQRO1W1QAOZHUGONTLYGOS0E5DO2OEH3LVKPED2H">Silk to Silk (Clearance=0.025mm) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDO1YAR5SLUE2MCQ3N2ZI0Y02A3FEBB12SYPRK3IOVS0O2YSIFPRYC">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDD1RNOPO3Z3QWJGT2WFPZ1ZD2ENNH1W10EHRRTBMLD5L2X24NJDPI">Room Radio (Bounding Region = (43.942mm, 41.034mm, 122.301mm, 104.394mm) (InComponentClass('Radio'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYC142STFVCFIDP4L15DQV5DBQMKL1WBGDYLA0VES0Z2BFGESZAFO">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">173</td>
+</tr>
+</table><br><a name="IDWE0P0GZQ0WM5D10I3CNUOALLZBQ2RJO3DRAAQXD3ESDE42EXT05M"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=0.152mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2667.485mil|Location2.X=2676.609mil|Location1.Y=1845.442mil|Location2.Y=1854.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2667.485mil|Location2.X=2676.609mil|Location1.Y=1845.442mil|Location2.Y=1854.566mil|Absolute=True">Clearance Constraint: (0.196mm &lt; 0.2mm) Between Pad oscillator1-2(59.07mm,27.98mm) on Top Layer And Track (56.679mm,28.881mm)(60.061mm,28.881mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (86.57mm,-0.29mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (86.57mm,0.91mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (86.57mm,-1.49mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (86.57mm,2.11mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (87.77mm,-0.29mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (87.77mm,0.91mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (87.77mm,-1.49mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (87.77mm,2.11mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (88.97mm,-0.29mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (88.97mm,0.91mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (88.97mm,-1.49mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.973mil|Location2.X=3772.973mil|Location1.Y=729.665mil|Location2.Y=734.665mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.152mm) Between Pad U17-17(87.77mm,0.31mm) on Top Layer And Via (88.97mm,2.11mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3880.083mil|Location2.X=3889.207mil|Location1.Y=676.914mil|Location2.Y=686.038mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3880.083mil|Location2.X=3889.207mil|Location1.Y=676.914mil|Location2.Y=686.038mil|Absolute=True">Clearance Constraint: (0.175mm &lt; 0.2mm) Between Pad U17-3(90.67mm,-0.665mm) on Top Layer And Track (90.67mm,-1.965mm)(90.67mm,-1.315mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4188.745mil|Location2.X=4197.869mil|Location1.Y=793.351mil|Location2.Y=802.475mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4188.745mil|Location2.X=4197.869mil|Location1.Y=793.351mil|Location2.Y=802.475mil|Absolute=True">Clearance Constraint: (0.12mm &lt; 0.2mm) Between Pad U2-7(97.95mm,2.63mm) on Top Layer And Track (98.97mm,1.98mm)(98.97mm,2.63mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4188.745mil|Location2.X=4197.869mil|Location1.Y=818.942mil|Location2.Y=828.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4188.745mil|Location2.X=4197.869mil|Location1.Y=818.942mil|Location2.Y=828.066mil|Absolute=True">Clearance Constraint: (0.12mm &lt; 0.2mm) Between Pad U2-7(97.95mm,2.63mm) on Top Layer And Track (98.97mm,2.63mm)(98.97mm,3.28mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4188.745mil|Location2.X=4197.869mil|Location1.Y=844.532mil|Location2.Y=853.656mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4188.745mil|Location2.X=4197.869mil|Location1.Y=844.532mil|Location2.Y=853.656mil|Absolute=True">Clearance Constraint: (0.12mm &lt; 0.2mm) Between Pad U2-7(97.95mm,2.63mm) on Top Layer And Track (98.97mm,3.28mm)(99.97mm,3.28mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2436.493mil|Location2.X=2445.617mil|Location1.Y=657.973mil|Location2.Y=667.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2436.493mil|Location2.X=2445.617mil|Location1.Y=657.973mil|Location2.Y=667.097mil|Absolute=True">Clearance Constraint: (0.196mm &lt; 0.2mm) Between Pad U5-4(53.825mm,-0.954mm) on Top Layer And Track (53.326mm,-1.637mm)(54.117mm,-1.637mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2439.224mil|Location2.X=2448.348mil|Location1.Y=659.105mil|Location2.Y=668.229mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2439.224mil|Location2.X=2448.348mil|Location1.Y=659.105mil|Location2.Y=668.229mil|Absolute=True">Clearance Constraint: (0.196mm &lt; 0.2mm) Between Pad U5-4(53.825mm,-0.954mm) on Top Layer And Track (54.117mm,-1.637mm)(54.47mm,-1.284mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=800.477mil|Location2.X=811.727mil|Location1.Y=2456.019mil|Location2.Y=2467.269mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=800.477mil|Location2.X=811.727mil|Location1.Y=2456.019mil|Location2.Y=2467.269mil|Absolute=True">Clearance Constraint: (0.117mm &lt; 0.254mm) Between Track (10.929mm,44.1mm)(15.675mm,44.1mm) on Int2 (PWR) And Via (12.475mm,44.55mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1195.68mil|Location2.X=1206.93mil|Location1.Y=2379.662mil|Location2.Y=2397.754mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1195.68mil|Location2.X=1206.93mil|Location1.Y=2379.662mil|Location2.Y=2397.754mil|Absolute=True">Clearance Constraint: (0.137mm &lt; 0.254mm) Between Track (14.3mm,42.437mm)(22.369mm,42.437mm) on Bottom Layer And Via (22.825mm,42.55mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1199.959mil|Location2.X=1214.065mil|Location1.Y=2378.776mil|Location2.Y=2392.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1199.959mil|Location2.X=1214.065mil|Location1.Y=2378.776mil|Location2.Y=2392.783mil|Absolute=True">Clearance Constraint: (0.07mm &lt; 0.254mm) Between Track (22.369mm,42.437mm)(23.025mm,41.781mm) on Bottom Layer And Via (22.825mm,42.55mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.797mil|Location2.X=1964.463mil|Location1.Y=798.804mil|Location2.Y=806.471mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.797mil|Location2.X=1964.463mil|Location1.Y=798.804mil|Location2.Y=806.471mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Track (34.267mm,2.35mm)(70.981mm,2.35mm) on Int2 (PWR) And Via (41.8mm,2.1mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2568.194mil|Location2.X=2579.444mil|Location1.Y=1859.465mil|Location2.Y=1870.715mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2568.194mil|Location2.X=2579.444mil|Location1.Y=1859.465mil|Location2.Y=1870.715mil|Absolute=True">Clearance Constraint: (0.25mm &lt; 0.254mm) Between Track (56.679mm,28.881mm)(60.061mm,28.881mm) on Top Layer And Via (57.375mm,29.464mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2973.706mil|Location2.X=2984.956mil|Location1.Y=1893.428mil|Location2.Y=1904.678mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2973.706mil|Location2.X=2984.956mil|Location1.Y=1893.428mil|Location2.Y=1904.678mil|Absolute=True">Clearance Constraint: (0.043mm &lt; 0.254mm) Between Track (56.816mm,30.05mm)(69.281mm,30.05mm) on Bottom Layer And Via (67.675mm,29.675mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3333.765mil|Location2.X=3341.432mil|Location1.Y=1599.986mil|Location2.Y=1607.652mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3333.765mil|Location2.X=3341.432mil|Location1.Y=1599.986mil|Location2.Y=1607.652mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Track (76.75mm,21.25mm)(76.75mm,22.425mm) on Top Layer And Via (76.775mm,22.45mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3333.765mil|Location2.X=3341.432mil|Location1.Y=1599.986mil|Location2.Y=1607.652mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3333.765mil|Location2.X=3341.432mil|Location1.Y=1599.986mil|Location2.Y=1607.652mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Track (76.75mm,22.425mm)(76.775mm,22.45mm) on Top Layer And Via (76.775mm,22.45mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3773.119mil|Location2.X=3787.126mil|Location1.Y=741.89mil|Location2.Y=755.996mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3773.119mil|Location2.X=3787.126mil|Location1.Y=741.89mil|Location2.Y=755.996mil|Absolute=True">Clearance Constraint: (0.094mm &lt; 0.254mm) Between Track (87.77mm,0.31mm)(88.776mm,1.316mm) on Top Layer And Via (87.77mm,0.91mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3803.82mil|Location2.X=3817.827mil|Location1.Y=758.434mil|Location2.Y=772.54mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3803.82mil|Location2.X=3817.827mil|Location1.Y=758.434mil|Location2.Y=772.54mil|Absolute=True">Clearance Constraint: (0.094mm &lt; 0.254mm) Between Track (87.77mm,0.31mm)(88.776mm,1.316mm) on Top Layer And Via (88.97mm,0.91mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.092mil|Location2.X=3823.342mil|Location1.Y=761.499mil|Location2.Y=772.749mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.092mil|Location2.X=3823.342mil|Location1.Y=761.499mil|Location2.Y=772.749mil|Absolute=True">Clearance Constraint: (0.076mm &lt; 0.254mm) Between Track (88.776mm,1.316mm)(89.39mm,1.316mm) on Top Layer And Via (88.97mm,0.91mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDSV5E0DU1J5WZOTZNGBEC4VNA5H3MNTTXLA4TCZEK3EC0HUP1AG0"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Acute Angle Constraint (Minimum=60.000) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1083.361mil|Location2.X=1102.861mil|Location1.Y=2132.377mil|Location2.Y=2151.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1083.361mil|Location2.X=1102.861mil|Location1.Y=2132.377mil|Location2.Y=2151.877mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Track (15.116mm,35.934mm)(19.854mm,35.934mm) on Top Layer And Track (18.19mm,37.597mm)(19.854mm,35.934mm) on Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4302.177mil|Location2.X=4321.677mil|Location1.Y=1238.495mil|Location2.Y=1257.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4302.177mil|Location2.X=4321.677mil|Location1.Y=1238.495mil|Location2.Y=1257.995mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad U19-7(99.885mm,13.2mm) on Top Layer And Polygon Region (0 hole(s)) Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4289.007mil|Location2.X=4308.507mil|Location1.Y=1251.665mil|Location2.Y=1271.165mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4289.007mil|Location2.X=4308.507mil|Location1.Y=1251.665mil|Location2.Y=1271.165mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad U19-7(99.885mm,13.2mm) on Top Layer And Polygon Region (0 hole(s)) Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4289.007mil|Location2.X=4308.507mil|Location1.Y=1672.925mil|Location2.Y=1692.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4289.007mil|Location2.X=4308.507mil|Location1.Y=1672.925mil|Location2.Y=1692.425mil|Absolute=True">Acute Angle Constraint: (47.518 &lt; 60.000) Between Pad U20-7(99.885mm,23.9mm) on Top Layer And Polygon Region (1 hole(s)) Top Layer (Angle = 47.518)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3580.524mil|Location2.X=3600.024mil|Location1.Y=628.026mil|Location2.Y=647.526mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3580.524mil|Location2.X=3600.024mil|Location1.Y=628.026mil|Location2.Y=647.526mil|Absolute=True">Acute Angle Constraint: (45.980 &lt; 60.000) Between Pad C36-2(82.31mm,-2.625mm) on Top Layer And Track (83.127mm,-2.277mm)(83.439mm,-1.965mm) on Top Layer (Angle = 45.980)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1385.387mil|Location2.X=1404.887mil|Location1.Y=1079.495mil|Location2.Y=1098.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1385.387mil|Location2.X=1404.887mil|Location1.Y=1079.495mil|Location2.Y=1098.995mil|Absolute=True">Acute Angle Constraint: (45.235 &lt; 60.000) Between Track (22.762mm,13.724mm)(27.295mm,9.19mm) on Int2 (PWR) And Track (27.427mm,9.19mm)(27.427mm,13.667mm) on Int2 (PWR) (Angle = 45.235)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2003.766mil|Location2.X=2023.266mil|Location1.Y=893.201mil|Location2.Y=912.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2003.766mil|Location2.X=2023.266mil|Location1.Y=893.201mil|Location2.Y=912.701mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad C11-2(42.77mm,4.04mm) on Top Layer And Track (42.81mm,4.43mm)(43.17mm,4.79mm) on Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=862.441mil|Location2.X=881.941mil|Location1.Y=926.333mil|Location2.Y=945.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=862.441mil|Location2.X=881.941mil|Location1.Y=926.333mil|Location2.Y=945.833mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Track (13.915mm,5.366mm)(14.469mm,5.92mm) on Top Layer And Track (13.915mm,5.3mm)(14.225mm,5.3mm) on Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=944.192mil|Location2.X=963.692mil|Location1.Y=2428.535mil|Location2.Y=2448.035mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=944.192mil|Location2.X=963.692mil|Location1.Y=2428.535mil|Location2.Y=2448.035mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad C56-1(16.266mm,43.137mm) on Top Layer And Track (15.69mm,44.085mm)(16.225mm,43.55mm) on Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4286.054mil|Location2.X=4305.554mil|Location1.Y=916.626mil|Location2.Y=936.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4286.054mil|Location2.X=4305.554mil|Location1.Y=916.626mil|Location2.Y=936.126mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad U19-1(99.885mm,5.58mm) on Top Layer And Polygon Region (0 hole(s)) Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4275.296mil|Location2.X=4294.796mil|Location1.Y=2197.464mil|Location2.Y=2216.964mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4275.296mil|Location2.X=4294.796mil|Location1.Y=2197.464mil|Location2.Y=2216.964mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad U21-1(99.885mm,38.113mm) on Top Layer And Track (100.172mm,38.113mm)(100.96mm,37.325mm) on Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4256.487mil|Location2.X=4275.987mil|Location1.Y=1773.319mil|Location2.Y=1792.819mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4256.487mil|Location2.X=4275.987mil|Location1.Y=1773.319mil|Location2.Y=1792.819mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad U22-1(99.885mm,27.34mm) on Top Layer And Polygon Region (0 hole(s)) Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4274.199mil|Location2.X=4293.699mil|Location1.Y=1773.319mil|Location2.Y=1792.819mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4274.199mil|Location2.X=4293.699mil|Location1.Y=1773.319mil|Location2.Y=1792.819mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad U22-1(99.885mm,27.34mm) on Top Layer And Track (100.144mm,27.34mm)(100.999mm,26.485mm) on Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3308.132mil|Location2.X=3327.632mil|Location1.Y=608.246mil|Location2.Y=627.746mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3308.132mil|Location2.X=3327.632mil|Location1.Y=608.246mil|Location2.Y=627.746mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Track (65.225mm,-2.95mm)(76.775mm,-2.95mm) on Int2 (PWR) And Track (75.005mm,-1.18mm)(76.775mm,-2.95mm) on Int2 (PWR) (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4275.908mil|Location2.X=4295.408mil|Location1.Y=2187.769mil|Location2.Y=2207.269mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4275.908mil|Location2.X=4295.408mil|Location1.Y=2187.769mil|Location2.Y=2207.269mil|Absolute=True">Acute Angle Constraint: (22.502 &lt; 60.000) Between Track (100.172mm,38.113mm)(100.96mm,37.325mm) on Top Layer And Via (100.525mm,37.3mm) from Top Layer to Bottom Layer (Angle = 22.502)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4592.958mil|Location2.X=4612.458mil|Location1.Y=2667.062mil|Location2.Y=2686.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4592.958mil|Location2.X=4612.458mil|Location1.Y=2667.062mil|Location2.Y=2686.562mil|Absolute=True">Acute Angle Constraint: (45.753 &lt; 60.000) Between Pad J1-1(109.488mm,50.393mm) on Multi-Layer And Track (108.659mm,49.339mm)(108.882mm,49.562mm) on Bottom Layer (Angle = 45.753)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=780.524mil|Location2.X=800.024mil|Location1.Y=2054.756mil|Location2.Y=2074.256mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=780.524mil|Location2.X=800.024mil|Location1.Y=2054.756mil|Location2.Y=2074.256mil|Absolute=True">Acute Angle Constraint: (46.147 &lt; 60.000) Between Pad C74-2(11.565mm,33.639mm) on Top Layer And Track (12.011mm,33.962mm)(12.335mm,34.286mm) on Top Layer (Angle = 46.147)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1260.642mil|Location2.X=1280.142mil|Location1.Y=1286.918mil|Location2.Y=1306.418mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1260.642mil|Location2.X=1280.142mil|Location1.Y=1286.918mil|Location2.Y=1306.418mil|Absolute=True">Acute Angle Constraint: (46.821 &lt; 60.000) Between Pad U18-16(24.29mm,14.875mm) on Top Layer And Track (23.808mm,14.32mm)(24.11mm,14.622mm) on Top Layer (Angle = 46.821)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2603.555mil|Location2.X=2623.055mil|Location1.Y=1726.061mil|Location2.Y=1745.561mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2603.555mil|Location2.X=2623.055mil|Location1.Y=1726.061mil|Location2.Y=1745.561mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad oscillator1-3(59.07mm,25.78mm) on Top Layer And Track (58.24mm,25.78mm)(59.07mm,25.78mm) on Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=822.422mil|Location2.X=841.922mil|Location1.Y=1280.754mil|Location2.Y=1300.254mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=822.422mil|Location2.X=841.922mil|Location1.Y=1280.754mil|Location2.Y=1300.254mil|Absolute=True">Acute Angle Constraint: (54.279 &lt; 60.000) Between Pad U13-6(13.19mm,14.54mm) on Top Layer And Track (12.39mm,13.86mm)(13.07mm,14.54mm) on Top Layer (Angle = 54.279)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2563.201mil|Location2.X=2582.701mil|Location1.Y=1635.51mil|Location2.Y=1655.01mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2563.201mil|Location2.X=2582.701mil|Location1.Y=1635.51mil|Location2.Y=1655.01mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad SW1-A(57.545mm,23.81mm) on Top Layer And Track (56.104mm,22.369mm)(57.545mm,23.81mm) on Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2563.201mil|Location2.X=2582.701mil|Location1.Y=1494.986mil|Location2.Y=1514.486mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2563.201mil|Location2.X=2582.701mil|Location1.Y=1494.986mil|Location2.Y=1514.486mil|Absolute=True">Acute Angle Constraint: (45.000 &lt; 60.000) Between Pad SW1-A'(57.545mm,19.41mm) on Top Layer And Track (56.104mm,20.851mm)(57.765mm,19.19mm) on Top Layer (Angle = 45.000)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2537.278mil|Location2.X=2556.778mil|Location1.Y=1908.555mil|Location2.Y=1928.055mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2537.278mil|Location2.X=2556.778mil|Location1.Y=1908.555mil|Location2.Y=1928.055mil|Absolute=True">Acute Angle Constraint: (20.547 &lt; 60.000) Between Pad *6-11(56.46mm,30.88mm) on Top Layer And Track (56.505mm,30.118mm)(56.505mm,30.835mm) on Top Layer (Angle = 20.547)</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDOGJFUNGIWYNYO42H2E05DHGAHEIB5P0R1IMG3BBDDJXUFEYM54IK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.025mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=891.198mil|Location2.X=893.448mil|Location1.Y=2439.308mil|Location2.Y=2441.558mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=891.198mil|Location2.X=893.448mil|Location1.Y=2439.308mil|Location2.Y=2441.558mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *1-1(14.915mm,44.4mm) on Top Layer And Pad *1-2(14.415mm,44.4mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=891.198mil|Location2.X=893.448mil|Location1.Y=2325.135mil|Location2.Y=2327.385mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=891.198mil|Location2.X=893.448mil|Location1.Y=2325.135mil|Location2.Y=2327.385mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *1-10(14.915mm,40.1mm) on Top Layer And Pad *1-9(14.415mm,40.1mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=871.513mil|Location2.X=873.763mil|Location1.Y=2439.308mil|Location2.Y=2441.558mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=871.513mil|Location2.X=873.763mil|Location1.Y=2439.308mil|Location2.Y=2441.558mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *1-2(14.415mm,44.4mm) on Top Layer And Pad *1-3(13.915mm,44.4mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=851.828mil|Location2.X=854.078mil|Location1.Y=2439.308mil|Location2.Y=2441.558mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=851.828mil|Location2.X=854.078mil|Location1.Y=2439.308mil|Location2.Y=2441.558mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *1-3(13.915mm,44.4mm) on Top Layer And Pad *1-4(13.415mm,44.4mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=832.143mil|Location2.X=834.393mil|Location1.Y=2439.308mil|Location2.Y=2441.558mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=832.143mil|Location2.X=834.393mil|Location1.Y=2439.308mil|Location2.Y=2441.558mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *1-4(13.415mm,44.4mm) on Top Layer And Pad *1-5(12.915mm,44.4mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=832.143mil|Location2.X=834.393mil|Location1.Y=2325.135mil|Location2.Y=2327.385mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=832.143mil|Location2.X=834.393mil|Location1.Y=2325.135mil|Location2.Y=2327.385mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *1-6(12.915mm,40.1mm) on Top Layer And Pad *1-7(13.415mm,40.1mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=851.828mil|Location2.X=854.078mil|Location1.Y=2325.135mil|Location2.Y=2327.385mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=851.828mil|Location2.X=854.078mil|Location1.Y=2325.135mil|Location2.Y=2327.385mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *1-7(13.415mm,40.1mm) on Top Layer And Pad *1-8(13.915mm,40.1mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=871.513mil|Location2.X=873.763mil|Location1.Y=2325.135mil|Location2.Y=2327.385mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=871.513mil|Location2.X=873.763mil|Location1.Y=2325.135mil|Location2.Y=2327.385mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *1-8(13.915mm,40.1mm) on Top Layer And Pad *1-9(14.415mm,40.1mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=491.985mil|Location2.X=494.235mil|Location1.Y=2487.847mil|Location2.Y=2490.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=491.985mil|Location2.X=494.235mil|Location1.Y=2487.847mil|Location2.Y=2490.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *3-1(4.775mm,44.233mm) on Top Layer And Pad *3-2(4.275mm,44.233mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=491.985mil|Location2.X=494.235mil|Location1.Y=2263.438mil|Location2.Y=2265.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=491.985mil|Location2.X=494.235mil|Location1.Y=2263.438mil|Location2.Y=2265.688mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *3-10(4.775mm,39.933mm) on Top Layer And Pad *3-9(4.275mm,39.933mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=472.3mil|Location2.X=474.55mil|Location1.Y=2487.847mil|Location2.Y=2490.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=472.3mil|Location2.X=474.55mil|Location1.Y=2487.847mil|Location2.Y=2490.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *3-2(4.275mm,44.233mm) on Top Layer And Pad *3-3(3.775mm,44.233mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=452.615mil|Location2.X=454.865mil|Location1.Y=2487.847mil|Location2.Y=2490.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=452.615mil|Location2.X=454.865mil|Location1.Y=2487.847mil|Location2.Y=2490.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *3-3(3.775mm,44.233mm) on Top Layer And Pad *3-4(3.275mm,44.233mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=432.93mil|Location2.X=435.18mil|Location1.Y=2487.847mil|Location2.Y=2490.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=432.93mil|Location2.X=435.18mil|Location1.Y=2487.847mil|Location2.Y=2490.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *3-4(3.275mm,44.233mm) on Top Layer And Pad *3-5(2.775mm,44.233mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=432.93mil|Location2.X=435.18mil|Location1.Y=2263.438mil|Location2.Y=2265.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=432.93mil|Location2.X=435.18mil|Location1.Y=2263.438mil|Location2.Y=2265.688mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *3-6(2.775mm,39.933mm) on Top Layer And Pad *3-7(3.275mm,39.933mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=452.615mil|Location2.X=454.865mil|Location1.Y=2263.438mil|Location2.Y=2265.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=452.615mil|Location2.X=454.865mil|Location1.Y=2263.438mil|Location2.Y=2265.688mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *3-7(3.275mm,39.933mm) on Top Layer And Pad *3-8(3.775mm,39.933mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=472.3mil|Location2.X=474.55mil|Location1.Y=2263.438mil|Location2.Y=2265.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=472.3mil|Location2.X=474.55mil|Location1.Y=2263.438mil|Location2.Y=2265.688mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *3-8(3.775mm,39.933mm) on Top Layer And Pad *3-9(4.275mm,39.933mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1278.009mil|Location2.X=1280.259mil|Location1.Y=2416.521mil|Location2.Y=2418.771mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1278.009mil|Location2.X=1280.259mil|Location1.Y=2416.521mil|Location2.Y=2418.771mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *5-1(24.74mm,43.821mm) on Top Layer And Pad *5-2(24.24mm,43.821mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1278.009mil|Location2.X=1280.259mil|Location1.Y=2302.348mil|Location2.Y=2304.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1278.009mil|Location2.X=1280.259mil|Location1.Y=2302.348mil|Location2.Y=2304.598mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *5-10(24.74mm,39.521mm) on Top Layer And Pad *5-9(24.24mm,39.521mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.324mil|Location2.X=1260.574mil|Location1.Y=2416.521mil|Location2.Y=2418.771mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.324mil|Location2.X=1260.574mil|Location1.Y=2416.521mil|Location2.Y=2418.771mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *5-2(24.24mm,43.821mm) on Top Layer And Pad *5-3(23.74mm,43.821mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1238.639mil|Location2.X=1240.889mil|Location1.Y=2416.521mil|Location2.Y=2418.771mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1238.639mil|Location2.X=1240.889mil|Location1.Y=2416.521mil|Location2.Y=2418.771mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *5-3(23.74mm,43.821mm) on Top Layer And Pad *5-4(23.24mm,43.821mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1218.954mil|Location2.X=1221.204mil|Location1.Y=2416.521mil|Location2.Y=2418.771mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1218.954mil|Location2.X=1221.204mil|Location1.Y=2416.521mil|Location2.Y=2418.771mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *5-4(23.24mm,43.821mm) on Top Layer And Pad *5-5(22.74mm,43.821mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1218.954mil|Location2.X=1221.204mil|Location1.Y=2302.348mil|Location2.Y=2304.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1218.954mil|Location2.X=1221.204mil|Location1.Y=2302.348mil|Location2.Y=2304.598mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *5-6(22.74mm,39.521mm) on Top Layer And Pad *5-7(23.24mm,39.521mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1238.639mil|Location2.X=1240.889mil|Location1.Y=2302.348mil|Location2.Y=2304.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1238.639mil|Location2.X=1240.889mil|Location1.Y=2302.348mil|Location2.Y=2304.598mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *5-7(23.24mm,39.521mm) on Top Layer And Pad *5-8(23.74mm,39.521mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1225.391mil|Location2.X=1227.641mil|Location1.Y=2307.757mil|Location2.Y=2310.007mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1225.391mil|Location2.X=1227.641mil|Location1.Y=2307.757mil|Location2.Y=2310.007mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.002mm &lt; 0.025mm) Between Pad *5-7(23.24mm,39.521mm) on Top Layer And Via (23.153mm,40.713mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.002mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.324mil|Location2.X=1260.574mil|Location1.Y=2302.348mil|Location2.Y=2304.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.324mil|Location2.X=1260.574mil|Location1.Y=2302.348mil|Location2.Y=2304.598mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *5-8(23.74mm,39.521mm) on Top Layer And Pad *5-9(24.24mm,39.521mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=804.584mil|Location2.X=806.834mil|Location1.Y=2098.715mil|Location2.Y=2100.965mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=804.584mil|Location2.X=806.834mil|Location1.Y=2098.715mil|Location2.Y=2100.965mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *7-1(13.165mm,35.299mm) on Top Layer And Pad *7-2(13.165mm,34.799mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1028.993mil|Location2.X=1031.243mil|Location1.Y=2098.715mil|Location2.Y=2100.965mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1028.993mil|Location2.X=1031.243mil|Location1.Y=2098.715mil|Location2.Y=2100.965mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *7-10(17.465mm,35.299mm) on Top Layer And Pad *7-9(17.465mm,34.799mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=804.584mil|Location2.X=806.834mil|Location1.Y=2079.03mil|Location2.Y=2081.28mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=804.584mil|Location2.X=806.834mil|Location1.Y=2079.03mil|Location2.Y=2081.28mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *7-2(13.165mm,34.799mm) on Top Layer And Pad *7-3(13.165mm,34.299mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=804.584mil|Location2.X=806.834mil|Location1.Y=2059.345mil|Location2.Y=2061.595mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=804.584mil|Location2.X=806.834mil|Location1.Y=2059.345mil|Location2.Y=2061.595mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *7-3(13.165mm,34.299mm) on Top Layer And Pad *7-4(13.165mm,33.799mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=804.584mil|Location2.X=806.834mil|Location1.Y=2039.66mil|Location2.Y=2041.91mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=804.584mil|Location2.X=806.834mil|Location1.Y=2039.66mil|Location2.Y=2041.91mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *7-4(13.165mm,33.799mm) on Top Layer And Pad *7-5(13.165mm,33.299mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1028.993mil|Location2.X=1031.243mil|Location1.Y=2039.66mil|Location2.Y=2041.91mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1028.993mil|Location2.X=1031.243mil|Location1.Y=2039.66mil|Location2.Y=2041.91mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *7-6(17.465mm,33.299mm) on Top Layer And Pad *7-7(17.465mm,33.799mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1028.993mil|Location2.X=1031.243mil|Location1.Y=2059.345mil|Location2.Y=2061.595mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1028.993mil|Location2.X=1031.243mil|Location1.Y=2059.345mil|Location2.Y=2061.595mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *7-7(17.465mm,33.799mm) on Top Layer And Pad *7-8(17.465mm,34.299mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1028.993mil|Location2.X=1031.243mil|Location1.Y=2079.03mil|Location2.Y=2081.28mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1028.993mil|Location2.X=1031.243mil|Location1.Y=2079.03mil|Location2.Y=2081.28mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.025mm) Between Pad *7-8(17.465mm,34.299mm) on Top Layer And Pad *7-9(17.465mm,34.799mm) on Top Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1753.452mil|Location2.X=1755.702mil|Location1.Y=903.875mil|Location2.Y=906.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1753.452mil|Location2.X=1755.702mil|Location1.Y=903.875mil|Location2.Y=906.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.014mm &lt; 0.025mm) Between Pad C12-2(37.2mm,4.47mm) on Top Layer And Via (36.205mm,4.7mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.014mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1564.82mil|Location2.X=1567.07mil|Location1.Y=1424.987mil|Location2.Y=1427.237mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1564.82mil|Location2.X=1567.07mil|Location1.Y=1424.987mil|Location2.Y=1427.237mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.014mm &lt; 0.025mm) Between Pad C14-2(31.66mm,18.57mm) on Top Layer And Via (31.775mm,17.575mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.014mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1199.446mil|Location2.X=1201.696mil|Location1.Y=1786.776mil|Location2.Y=1789.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1199.446mil|Location2.X=1201.696mil|Location1.Y=1786.776mil|Location2.Y=1789.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.013mm &lt; 0.025mm) Between Pad C34-2(21.537mm,26.703mm) on Top Layer And Via (22.855mm,27.126mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.013mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2286.773mil|Location2.X=2289.023mil|Location1.Y=896.72mil|Location2.Y=898.97mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2286.773mil|Location2.X=2289.023mil|Location1.Y=896.72mil|Location2.Y=898.97mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.025mm) Between Pad C6-2(50.75mm,4.38mm) on Top Layer And Via (49.748mm,4.518mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3082.247mil|Location2.X=3087.619mil|Location1.Y=1118.596mil|Location2.Y=1126.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3082.247mil|Location2.X=3087.619mil|Location1.Y=1118.596mil|Location2.Y=1126.003mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.015mm &lt; 0.025mm) Between Pad D1-1(69.81mm,10.71mm) on Top Layer And Via (70.608mm,9.938mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.015mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1222.094mil|Location2.X=1227.482mil|Location1.Y=1260.547mil|Location2.Y=1268.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1222.094mil|Location2.X=1227.482mil|Location1.Y=1260.547mil|Location2.Y=1268.575mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.008mm &lt; 0.025mm) Between Pad U18-1(23.555mm,14.14mm) on Top Layer And Via (22.762mm,13.724mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.008mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4484.248mil|Location2.X=4486.498mil|Location1.Y=2735.691mil|Location2.Y=2737.941mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4484.248mil|Location2.X=4486.498mil|Location1.Y=2735.691mil|Location2.Y=2737.941mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.024mm &lt; 0.025mm) Between Pad U3-6(105.47mm,51.24mm) on Top Layer And Via (106.294mm,51.228mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.024mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1757.733mil|Location2.X=1759.983mil|Location1.Y=984.564mil|Location2.Y=986.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1757.733mil|Location2.X=1759.983mil|Location1.Y=984.564mil|Location2.Y=986.814mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.02mm &lt; 0.025mm) Between Pad U4-3(36.67mm,6.13mm) on Top Layer And Via (36.675mm,7.113mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3680.962mil|Location2.X=3683.212mil|Location1.Y=1552.005mil|Location2.Y=1554.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3680.962mil|Location2.X=3683.212mil|Location1.Y=1552.005mil|Location2.Y=1554.255mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.003mm &lt; 0.025mm) Between Via (85.175mm,21.1mm) from Top Layer to Bottom Layer And Via (85.875mm,21.225mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.003mm] / [Bottom Solder] Mask Sliver [0.003mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDGG2KBKDZBFPAD5J2H1CQHZF0TFJSH30KJ1G10UF2ESYA5XPSJCQH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.025mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4343.95mil|Location2.X=4345.617mil|Location1.Y=1357.513mil|Location2.Y=1359.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4343.95mil|Location2.X=4345.617mil|Location1.Y=1357.513mil|Location2.Y=1359.18mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Arc (102.358mm,16.34mm) on Top Overlay And Pad R49-2(102.92mm,15.52mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4343.659mil|Location2.X=4345.909mil|Location1.Y=1807.615mil|Location2.Y=1809.865mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4343.659mil|Location2.X=4345.909mil|Location1.Y=1807.615mil|Location2.Y=1809.865mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.01mm &lt; 0.025mm) Between Arc (102.358mm,27.4mm) on Top Overlay And Pad R55-1(102.79mm,28.235mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.01mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4343.659mil|Location2.X=4345.909mil|Location1.Y=2211.42mil|Location2.Y=2213.67mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4343.659mil|Location2.X=4345.909mil|Location1.Y=2211.42mil|Location2.Y=2213.67mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.023mm &lt; 0.025mm) Between Arc (102.358mm,38.173mm) on Top Overlay And Pad R54-2(102.79mm,37.325mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.023mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4343.659mil|Location2.X=4345.909mil|Location1.Y=951.119mil|Location2.Y=953.369mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4343.659mil|Location2.X=4345.909mil|Location1.Y=951.119mil|Location2.Y=953.369mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.02mm &lt; 0.025mm) Between Arc (102.358mm,5.64mm) on Top Overlay And Pad R48-1(102.9mm,6.485mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=748.379mil|Location2.X=750.046mil|Location1.Y=1435.269mil|Location2.Y=1436.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=748.379mil|Location2.X=750.046mil|Location1.Y=1435.269mil|Location2.Y=1436.936mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Arc (11.03mm,18.29mm) on Top Overlay And Pad C26-2(10.74mm,17.61mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=748.773mil|Location2.X=750.44mil|Location1.Y=1116.765mil|Location2.Y=1118.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=748.773mil|Location2.X=750.44mil|Location1.Y=1116.765mil|Location2.Y=1118.432mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Arc (11.04mm,10.2mm) on Top Overlay And Pad C25-2(10.61mm,9.55mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=747.938mil|Location2.X=749.604mil|Location1.Y=1755.544mil|Location2.Y=1757.211mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=747.938mil|Location2.X=749.604mil|Location1.Y=1755.544mil|Location2.Y=1757.211mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Arc (11.05mm,26.42mm) on Top Overlay And Pad C30-2(10.62mm,25.8mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1295.23mil|Location2.X=1296.896mil|Location1.Y=2502.246mil|Location2.Y=2503.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1295.23mil|Location2.X=1296.896mil|Location1.Y=2502.246mil|Location2.Y=2503.913mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Arc (25.02mm,45.291mm) on Top Overlay And Pad C67-2(24.45mm,45.325mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2155.663mil|Location2.X=2157.329mil|Location1.Y=2591.371mil|Location2.Y=2593.038mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2155.663mil|Location2.X=2157.329mil|Location1.Y=2591.371mil|Location2.Y=2593.038mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Arc (46.65mm,47.555mm) on Top Overlay And Pad LED3-1(47.58mm,47.52mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=509.206mil|Location2.X=510.873mil|Location1.Y=2518.454mil|Location2.Y=2520.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=509.206mil|Location2.X=510.873mil|Location1.Y=2518.454mil|Location2.Y=2520.121mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Arc (5.055mm,45.703mm) on Top Overlay And Pad C63-2(4.41mm,45.748mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3944.643mil|Location2.X=3946.893mil|Location1.Y=641.473mil|Location2.Y=643.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3944.643mil|Location2.X=3946.893mil|Location1.Y=641.473mil|Location2.Y=643.723mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.005mm &lt; 0.025mm) Between Arc (91.97mm,-1.965mm) on Top Overlay And Pad C35-2(93mm,-2.185mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.005mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1860.387mil|Location2.X=1862.054mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1860.387mil|Location2.X=1862.054mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-1(39.5mm,31mm) on Top Layer And Track (37.675mm,30.475mm)(40.1mm,30.475mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1506.057mil|Location2.X=1507.723mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1506.057mil|Location2.X=1507.723mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-11(30.5mm,30.825mm) on Top Layer And Track (28.1mm,30.475mm)(30.525mm,30.475mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1470.624mil|Location2.X=1472.29mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1470.624mil|Location2.X=1472.29mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-12(29.6mm,30.925mm) on Top Layer And Track (28.1mm,30.475mm)(30.525mm,30.475mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1435.191mil|Location2.X=1436.857mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1435.191mil|Location2.X=1436.857mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-13(28.7mm,31mm) on Top Layer And Track (28.1mm,30.475mm)(30.525mm,30.475mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1420.427mil|Location2.X=1422.093mil|Location1.Y=1984.875mil|Location2.Y=1986.542mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1420.427mil|Location2.X=1422.093mil|Location1.Y=1984.875mil|Location2.Y=1986.542mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-16(28.75mm,32.4mm) on Top Layer And Track (28.1mm,30.475mm)(28.1mm,35.4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1420.427mil|Location2.X=1422.093mil|Location1.Y=2020.308mil|Location2.Y=2021.975mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1420.427mil|Location2.X=1422.093mil|Location1.Y=2020.308mil|Location2.Y=2021.975mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-17(28.75mm,33.3mm) on Top Layer And Track (28.1mm,30.475mm)(28.1mm,35.4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1420.427mil|Location2.X=1422.093mil|Location1.Y=2055.741mil|Location2.Y=2057.408mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1420.427mil|Location2.X=1422.093mil|Location1.Y=2055.741mil|Location2.Y=2057.408mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-18(28.75mm,34.2mm) on Top Layer And Track (28.1mm,30.475mm)(28.1mm,35.4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1430.269mil|Location2.X=1431.936mil|Location1.Y=2391.371mil|Location2.Y=2393.038mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1430.269mil|Location2.X=1431.936mil|Location1.Y=2391.371mil|Location2.Y=2393.038mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-19(31.1mm,41.675mm) on Top Layer And Track (28.1mm,42.475mm)(30.525mm,42.475mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1824.954mil|Location2.X=1826.621mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1824.954mil|Location2.X=1826.621mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-2(38.6mm,30.925mm) on Top Layer And Track (37.675mm,30.475mm)(40.1mm,30.475mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1797.395mil|Location2.X=1799.062mil|Location1.Y=2391.371mil|Location2.Y=2393.038mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1797.395mil|Location2.X=1799.062mil|Location1.Y=2391.371mil|Location2.Y=2393.038mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-20(37.1mm,41.675mm) on Top Layer And Track (37.675mm,42.475mm)(40.1mm,42.475mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1892.868mil|Location2.X=1894.534mil|Location1.Y=2055.741mil|Location2.Y=2057.408mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1892.868mil|Location2.X=1894.534mil|Location1.Y=2055.741mil|Location2.Y=2057.408mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-21(39.45mm,34.2mm) on Top Layer And Track (40.1mm,30.475mm)(40.1mm,35.4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1892.868mil|Location2.X=1894.534mil|Location1.Y=2020.308mil|Location2.Y=2021.975mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1892.868mil|Location2.X=1894.534mil|Location1.Y=2020.308mil|Location2.Y=2021.975mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-22(39.45mm,33.3mm) on Top Layer And Track (40.1mm,30.475mm)(40.1mm,35.4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1892.868mil|Location2.X=1894.534mil|Location1.Y=1984.875mil|Location2.Y=1986.542mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1892.868mil|Location2.X=1894.534mil|Location1.Y=1984.875mil|Location2.Y=1986.542mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-23(39.45mm,32.4mm) on Top Layer And Track (40.1mm,30.475mm)(40.1mm,35.4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1797.395mil|Location2.X=1799.062mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1797.395mil|Location2.X=1799.062mil|Location1.Y=1918.93mil|Location2.Y=1920.597mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *2-3(37.7mm,30.825mm) on Top Layer And Track (37.675mm,30.475mm)(40.1mm,30.475mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2366.687mil|Location2.X=2368.353mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2366.687mil|Location2.X=2368.353mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-1(52.36mm,31.055mm) on Top Layer And Track (50.535mm,30.53mm)(52.96mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2012.356mil|Location2.X=2014.023mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2012.356mil|Location2.X=2014.023mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-11(43.36mm,30.88mm) on Top Layer And Track (40.96mm,30.53mm)(43.385mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1976.923mil|Location2.X=1978.589mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1976.923mil|Location2.X=1978.589mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-12(42.46mm,30.98mm) on Top Layer And Track (40.96mm,30.53mm)(43.385mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1941.49mil|Location2.X=1943.156mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1941.49mil|Location2.X=1943.156mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-13(41.56mm,31.055mm) on Top Layer And Track (40.96mm,30.53mm)(43.385mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1926.726mil|Location2.X=1928.392mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1926.726mil|Location2.X=1928.392mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-16(41.61mm,32.455mm) on Top Layer And Track (40.96mm,30.53mm)(40.96mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1926.726mil|Location2.X=1928.392mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1926.726mil|Location2.X=1928.392mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-17(41.61mm,33.355mm) on Top Layer And Track (40.96mm,30.53mm)(40.96mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1926.726mil|Location2.X=1928.392mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1926.726mil|Location2.X=1928.392mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-18(41.61mm,34.255mm) on Top Layer And Track (40.96mm,30.53mm)(40.96mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1936.569mil|Location2.X=1938.235mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1936.569mil|Location2.X=1938.235mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-19(43.96mm,41.73mm) on Top Layer And Track (40.96mm,42.53mm)(43.385mm,42.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2331.254mil|Location2.X=2332.92mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2331.254mil|Location2.X=2332.92mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-2(51.46mm,30.98mm) on Top Layer And Track (50.535mm,30.53mm)(52.96mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2303.694mil|Location2.X=2305.361mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2303.694mil|Location2.X=2305.361mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-20(49.96mm,41.73mm) on Top Layer And Track (50.535mm,42.53mm)(52.96mm,42.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2399.167mil|Location2.X=2400.834mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2399.167mil|Location2.X=2400.834mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-21(52.31mm,34.255mm) on Top Layer And Track (52.96mm,30.53mm)(52.96mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2399.167mil|Location2.X=2400.834mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2399.167mil|Location2.X=2400.834mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-22(52.31mm,33.355mm) on Top Layer And Track (52.96mm,30.53mm)(52.96mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2399.167mil|Location2.X=2400.834mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2399.167mil|Location2.X=2400.834mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-23(52.31mm,32.455mm) on Top Layer And Track (52.96mm,30.53mm)(52.96mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2303.694mil|Location2.X=2305.361mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2303.694mil|Location2.X=2305.361mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *4-3(50.56mm,30.88mm) on Top Layer And Track (50.535mm,30.53mm)(52.96mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2882.435mil|Location2.X=2884.101mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2882.435mil|Location2.X=2884.101mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-1(65.46mm,31.055mm) on Top Layer And Track (63.635mm,30.53mm)(66.06mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2528.104mil|Location2.X=2529.771mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2528.104mil|Location2.X=2529.771mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-11(56.46mm,30.88mm) on Top Layer And Track (54.06mm,30.53mm)(56.485mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2492.671mil|Location2.X=2494.337mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2492.671mil|Location2.X=2494.337mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-12(55.56mm,30.98mm) on Top Layer And Track (54.06mm,30.53mm)(56.485mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2457.238mil|Location2.X=2458.904mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2457.238mil|Location2.X=2458.904mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-13(54.66mm,31.055mm) on Top Layer And Track (54.06mm,30.53mm)(56.485mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2442.474mil|Location2.X=2444.14mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2442.474mil|Location2.X=2444.14mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-16(54.71mm,32.455mm) on Top Layer And Track (54.06mm,30.53mm)(54.06mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2442.474mil|Location2.X=2444.14mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2442.474mil|Location2.X=2444.14mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-17(54.71mm,33.355mm) on Top Layer And Track (54.06mm,30.53mm)(54.06mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2442.474mil|Location2.X=2444.14mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2442.474mil|Location2.X=2444.14mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-18(54.71mm,34.255mm) on Top Layer And Track (54.06mm,30.53mm)(54.06mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2452.316mil|Location2.X=2453.983mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2452.316mil|Location2.X=2453.983mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-19(57.06mm,41.73mm) on Top Layer And Track (54.06mm,42.53mm)(56.485mm,42.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2847.002mil|Location2.X=2848.668mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2847.002mil|Location2.X=2848.668mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-2(64.56mm,30.98mm) on Top Layer And Track (63.635mm,30.53mm)(66.06mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2819.442mil|Location2.X=2821.109mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2819.442mil|Location2.X=2821.109mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-20(63.06mm,41.73mm) on Top Layer And Track (63.635mm,42.53mm)(66.06mm,42.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2914.915mil|Location2.X=2916.581mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2914.915mil|Location2.X=2916.581mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-21(65.41mm,34.255mm) on Top Layer And Track (66.06mm,30.53mm)(66.06mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2914.915mil|Location2.X=2916.581mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2914.915mil|Location2.X=2916.581mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-22(65.41mm,33.355mm) on Top Layer And Track (66.06mm,30.53mm)(66.06mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2914.915mil|Location2.X=2916.581mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2914.915mil|Location2.X=2916.581mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-23(65.41mm,32.455mm) on Top Layer And Track (66.06mm,30.53mm)(66.06mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2819.442mil|Location2.X=2821.109mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2819.442mil|Location2.X=2821.109mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *6-3(63.66mm,30.88mm) on Top Layer And Track (63.635mm,30.53mm)(66.06mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3393.458mil|Location2.X=3395.125mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3393.458mil|Location2.X=3395.125mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-1(78.44mm,31.055mm) on Top Layer And Track (76.615mm,30.53mm)(79.04mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.128mil|Location2.X=3040.794mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.128mil|Location2.X=3040.794mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-11(69.44mm,30.88mm) on Top Layer And Track (67.04mm,30.53mm)(69.465mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3003.695mil|Location2.X=3005.361mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3003.695mil|Location2.X=3005.361mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-12(68.54mm,30.98mm) on Top Layer And Track (67.04mm,30.53mm)(69.465mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2968.262mil|Location2.X=2969.928mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2968.262mil|Location2.X=2969.928mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-13(67.64mm,31.055mm) on Top Layer And Track (67.04mm,30.53mm)(69.465mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2953.498mil|Location2.X=2955.164mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2953.498mil|Location2.X=2955.164mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-16(67.69mm,32.455mm) on Top Layer And Track (67.04mm,30.53mm)(67.04mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2953.498mil|Location2.X=2955.164mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2953.498mil|Location2.X=2955.164mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-17(67.69mm,33.355mm) on Top Layer And Track (67.04mm,30.53mm)(67.04mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2953.498mil|Location2.X=2955.164mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2953.498mil|Location2.X=2955.164mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-18(67.69mm,34.255mm) on Top Layer And Track (67.04mm,30.53mm)(67.04mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2963.34mil|Location2.X=2965.007mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2963.34mil|Location2.X=2965.007mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-19(70.04mm,41.73mm) on Top Layer And Track (67.04mm,42.53mm)(69.465mm,42.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.025mil|Location2.X=3359.692mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.025mil|Location2.X=3359.692mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-2(77.54mm,30.98mm) on Top Layer And Track (76.615mm,30.53mm)(79.04mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3330.466mil|Location2.X=3332.133mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3330.466mil|Location2.X=3332.133mil|Location1.Y=2393.537mil|Location2.Y=2395.203mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-20(76.04mm,41.73mm) on Top Layer And Track (76.615mm,42.53mm)(79.04mm,42.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3425.939mil|Location2.X=3427.605mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3425.939mil|Location2.X=3427.605mil|Location1.Y=2057.907mil|Location2.Y=2059.573mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-21(78.39mm,34.255mm) on Top Layer And Track (79.04mm,30.53mm)(79.04mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3425.939mil|Location2.X=3427.605mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3425.939mil|Location2.X=3427.605mil|Location1.Y=2022.474mil|Location2.Y=2024.14mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-22(78.39mm,33.355mm) on Top Layer And Track (79.04mm,30.53mm)(79.04mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3425.939mil|Location2.X=3427.605mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3425.939mil|Location2.X=3427.605mil|Location1.Y=1987.041mil|Location2.Y=1988.707mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-23(78.39mm,32.455mm) on Top Layer And Track (79.04mm,30.53mm)(79.04mm,35.455mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3330.466mil|Location2.X=3332.133mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3330.466mil|Location2.X=3332.133mil|Location1.Y=1921.096mil|Location2.Y=1922.762mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad *8-3(76.64mm,30.88mm) on Top Layer And Track (76.615mm,30.53mm)(79.04mm,30.53mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1174.647mil|Location2.X=1176.314mil|Location1.Y=1445.831mil|Location2.Y=1447.497mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1174.647mil|Location2.X=1176.314mil|Location1.Y=1445.831mil|Location2.Y=1447.497mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad C38-1(20.95mm,17.89mm) on Top Layer And Text "R14" (21.857mm,18.458mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3255.014mil|Location2.X=3256.681mil|Location1.Y=1696.887mil|Location2.Y=1698.553mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3255.014mil|Location2.X=3256.681mil|Location1.Y=1696.887mil|Location2.Y=1698.553mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad J2-2(74.89mm,25.65mm) on Multi-Layer And Text "C24" (73.641mm,24.412mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1062.148mil|Location2.X=1063.814mil|Location1.Y=922.343mil|Location2.Y=924.01mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1062.148mil|Location2.X=1063.814mil|Location1.Y=922.343mil|Location2.Y=924.01mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad J6-11(19.4mm,5.04mm) on Top Layer And Text "C27" (17.445mm,4.527mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1289.643mil|Location2.X=1291.31mil|Location1.Y=1369.981mil|Location2.Y=1371.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1289.643mil|Location2.X=1291.31mil|Location1.Y=1369.981mil|Location2.Y=1371.648mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.025mm) Between Pad L1-1(25.17mm,17.435mm) on Top Layer And Text "L1" (24.778mm,15.897mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3352.99mil|Location2.X=3355.24mil|Location1.Y=2485.371mil|Location2.Y=2487.621mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3352.99mil|Location2.X=3355.24mil|Location1.Y=2485.371mil|Location2.Y=2487.621mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.019mm &lt; 0.025mm) Between Pad R19-1(76.81mm,45.37mm) on Top Layer And Text "LED8" (77.268mm,44.487mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.019mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID3BMCHSYSEQ3BMQRO1W1QAOZHUGONTLYGOS0E5DO2OEH3LVKPED2H"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.025mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3394.442mil|Location2.X=3396.109mil|Location1.Y=2600.332mil|Location2.Y=2601.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3394.442mil|Location2.X=3396.109mil|Location1.Y=2600.332mil|Location2.Y=2601.999mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.025mm) Between Arc (78.24mm,47.555mm) on Top Overlay And Text "R18" (77.507mm,47.783mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3213.361mil|Location2.X=3215.028mil|Location1.Y=1681.529mil|Location2.Y=1683.195mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3213.361mil|Location2.X=3215.028mil|Location1.Y=1681.529mil|Location2.Y=1683.195mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.025mm) Between Text "C24" (73.641mm,24.412mm) on Top Overlay And Track (73.365mm,24.445mm)(78.955mm,24.445mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDO1YAR5SLUE2MCQ3N2ZI0Y02A3FEBB12SYPRK3IOVS0O2YSIFPRYC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3329.965mil|Location2.X=3349.525mil|Location1.Y=1596.185mil|Location2.Y=1623.741mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3329.965mil|Location2.X=3349.525mil|Location1.Y=1596.185mil|Location2.Y=1623.741mil|Absolute=True">Net Antennae: Track (76.75mm,21.25mm)(76.75mm,22.425mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3415.398mil|Location2.X=3434.958mil|Location1.Y=1224.335mil|Location2.Y=1251.891mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3415.398mil|Location2.X=3434.958mil|Location1.Y=1224.335mil|Location2.Y=1251.891mil|Absolute=True">Net Antennae: Track (78.125mm,12.98mm)(78.92mm,12.98mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=955mil|Location2.X=998.053mil|Location1.Y=1257.638mil|Location2.Y=1324.222mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=955mil|Location2.X=998.053mil|Location1.Y=1257.638mil|Location2.Y=1324.222mil|Absolute=True">Net Antennae: Via (16.7mm,14.1mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.89mil|Location2.X=1004.942mil|Location1.Y=944.646mil|Location2.Y=1011.23mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\gtaha\Desktop\UBC Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.89mil|Location2.X=1004.942mil|Location1.Y=944.646mil|Location2.Y=1011.23mil|Absolute=True">Net Antennae: Via (16.875mm,6.15mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
