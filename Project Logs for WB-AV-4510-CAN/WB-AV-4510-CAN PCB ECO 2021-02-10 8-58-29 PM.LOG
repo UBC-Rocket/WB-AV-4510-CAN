@@ -1,0 +1,26 @@
+Added Pin To Net: NetName=NetU4_123 Pin=U4-123
+Added Pin To Net: NetName=NetU4_123 Pin=U15-9
+Added Net: Name=NetU4_123
+Added Pin To Net: NetName=NetU4_124 Pin=U4-124
+Added Pin To Net: NetName=NetU4_124 Pin=U15-7
+Added Net: Name=NetU4_124
+Added Pin To Net: NetName=NetU4_125 Pin=U4-125
+Added Pin To Net: NetName=NetU4_125 Pin=U13-9
+Added Net: Name=NetU4_125
+Added Pin To Net: NetName=NetU4_126 Pin=U4-126
+Added Pin To Net: NetName=NetU4_126 Pin=U13-7
+Added Net: Name=NetU4_126
+Added Pin To Net: NetName=NetU4_127 Pin=U4-127
+Added Pin To Net: NetName=NetU4_127 Pin=U12-9
+Added Net: Name=NetU4_127
+Added Pin To Net: NetName=NetU4_128 Pin=U4-128
+Added Pin To Net: NetName=NetU4_128 Pin=U12-7
+Added Net: Name=NetU4_128
+Added Pin To Net: NetName=NetU4_129 Pin=U4-129
+Added Pin To Net: NetName=NetU4_129 Pin=U14-9
+Added Net: Name=NetU4_129
+Added Pin To Net: NetName=NetU4_130 Pin=U4-130
+Added Pin To Net: NetName=NetU4_130 Pin=U14-7
+Added Net: Name=NetU4_130
+Added Member To Class: ClassName=CANbus Member=Component U3 TVS3300DRVR
+Added Member To Class: ClassName=24VRegs Member=Component U20 171032401

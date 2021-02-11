@@ -1,0 +1,19 @@
+Change Net Name : Old Net Name=T1+ New Net Name=T1_P
+Change Net Name : Old Net Name=T1- New Net Name=T1_N
+Change Net Name : Old Net Name=T2+ New Net Name=T2_P
+Change Net Name : Old Net Name=T2- New Net Name=T2_N
+Change Net Name : Old Net Name=T3+ New Net Name=T3_P
+Change Net Name : Old Net Name=T3- New Net Name=T3_N
+Change Net Name : Old Net Name=T4+ New Net Name=T4_P
+Change Net Name : Old Net Name=T4- New Net Name=T4_N
+Added Differential Pair: Name=T1
+Added Differential Pair: Name=T2
+Added Differential Pair: Name=T3
+Added Differential Pair: Name=T4
+Added Room: Name=24VRegs
+Added Room: Name=CANbus
+Added Room: Name=DAQ and Actuators
+Added Room: Name=MCU
+Added Room: Name=Power
+Added Room: Name=Temp_Sensor
+Added Room: Name=Thermocouple
