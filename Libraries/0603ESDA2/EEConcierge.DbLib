@@ -1,7 +1,7 @@
 [OutputDatabaseLinkFile]
 Version=1.1
 [DatabaseLinks]
-ConnectionString=Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Rachelle Van Rumpt\OneDrive - UBC\Desktop\UBC ROCKET\Avionics\CAN\WB-AV-4510-CAN\Libraries\0603ESDA2\db.xlsx;Extended Properties="Excel 12.0 Xml;HDR=Yes;IMEX=1"
+ConnectionString=Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\xander\rocket\Altium\WB-AV-4510-CAN\Libraries\0603ESDA2\db.xlsx;Extended Properties="Excel 12.0 Xml;HDR=Yes;IMEX=1"
 AddMode=3
 RemoveMode=1
 UpdateMode=2
@@ -19,13 +19,6 @@ LibrarySearchPath=
 OrcadMultiValueDelimiter=,
 SearchSubDirectories=0
 SchemaName=
-LastFocusedTable=Upverter$
-[Table1]
-SchemaName=
-TableName=Upverter$
-Enabled=True
-UserWhere=0
-UserWhereText=
 [FieldMap1]
 Options=FieldName=Upverter$.Part Number|TableNameOnly=Upverter$|FieldNameOnly=Part Number|FieldType=0|ParameterName=Part Number|VisibleOnAdd=False|AddMode=0|RemoveMode=0|UpdateMode=0
 [FieldMap2]
