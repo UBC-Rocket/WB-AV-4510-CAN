@@ -1,9 +1,0 @@
-Added Pin To Net: NetName=NetU1_4 Pin=U2-37
-Added Pin To Net: NetName=NetU1_1 Pin=U2-38
-Added Pin To Net: NetName=NetU1_6 Pin=U2-50
-Added Pin To Net: NetName=NetU1_7 Pin=U2-51
-Added Pin To Net: NetName=CAN2_STBN Pin=U2-75
-Added Pin To Net: NetName=CAN1_STBN Pin=U2-76
-Added Member To Class: ClassName=CANbus Member=Component C5 GRM188R71H472KA01D
-Added Member To Class: ClassName=CANbus Member=Component J2 0705530003
-Added Member To Class: ClassName=CANbus Member=Component TP2 5003
