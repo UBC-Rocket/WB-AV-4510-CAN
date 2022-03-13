@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: C:\Users\ericj\Rocket\WB-AV-4510-CAN\WB-AV-4510-CAN.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=wb-av-4510-can-roundholes.txt|DrillLayers=gtl,g1,g2,gbl
+LayersSetName=Top_Bot_Slot_Holes|DrillFile=wb-av-4510-can-slotholes.txt|DrillLayers=gtl,g1,g2,gbl
